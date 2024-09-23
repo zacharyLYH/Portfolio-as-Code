@@ -77,15 +77,29 @@ interface CollapsibleSectionProps {
     onToggle: () => void;
 }
 
-const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({ title, children, isCollapsed, onToggle }) => (
-    <div className="border w-full rounded p-4">
-        <div className="flex justify-between items-center cursor-pointer" onClick={onToggle}>
-            <h3 className="text-lg font-semibold">{title}</h3>
-            {isCollapsed ? <ChevronDown className="h-4 w-4" /> : <ChevronUp className="h-4 w-4" />}
-        </div>
-        {!isCollapsed && <div className="mt-4">{children}</div>}
+const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
+    title,
+    children,
+    isCollapsed,
+    onToggle,
+  }) => (
+    <div className="border rounded p-4 overflow-hidden md:w-full">
+      <div
+        className="flex justify-between items-center cursor-pointer"
+        onClick={onToggle}
+      >
+        <h3 className="text-lg font-semibold overflow-hidden text-ellipsis ">
+          {title}
+        </h3>
+        {isCollapsed ? (
+          <ChevronDown className="h-4 w-4" />
+        ) : (
+          <ChevronUp className="h-4 w-4" />
+        )}
+      </div>
+      {!isCollapsed && <div className="mt-4">{children}</div>}
     </div>
-);
+  );
 
 export default function PortfolioPage() {
     const [error, setError] = useState<string | null>(null);
@@ -585,7 +599,7 @@ export default function PortfolioPage() {
             <div className="space-y-4">
                 <h2 className="text-2xl font-semibold">Jobs & Projects</h2>
                 {pfData.jobsProjects.map((item, index) => (
-                    <div key={item.id} className="flex mb-4">
+                    <div key={item.id} className="flex flex-row mb-4">
                         <CollapsibleSection
                             title={item.title || 'Untitled Job/Project'}
                             isCollapsed={item.isCollapsed}
@@ -605,7 +619,7 @@ export default function PortfolioPage() {
                                     placeholder="Title (Required)"
                                     required
                                 />
-                                <div className="flex space-x-2">
+                                <div className="flex flex-col gap-y-2 md: flex-row space-x-2">
                                     <DatePicker
                                         id={item.id}
                                         field="startDate"
@@ -659,7 +673,7 @@ export default function PortfolioPage() {
                             </div>
                         </CollapsibleSection>
                         {item.isCollapsed && (
-                            <div className="flex ml-2 space-x-2 items-center ">
+                            <div className="flex space-x-1 items-center ">
                                 <Button
                                     onClick={() => removeJobProject(item.id)}
                                     variant="destructive"
@@ -693,7 +707,7 @@ export default function PortfolioPage() {
             <div className="space-y-4">
                 <h2 className="text-2xl font-semibold">Education</h2>
                 {pfData.education.map((edu, index) => (
-                    <div key={edu.id} className="flex mb-4">
+                    <div key={edu.id} className="flex flex-row mb-4">
                         <CollapsibleSection
                             title={edu.institutionName || 'Untitled Education'}
                             isCollapsed={edu.isCollapsed}
@@ -716,7 +730,7 @@ export default function PortfolioPage() {
                                     onChange={(e) => handleEducationChange(edu.id, 'awarded', e.target.value)}
                                     placeholder="Awarded"
                                 />
-                                <div className="flex space-x-2">
+                                <div className="flex flex-col gap-y-2 md: flex-row space-x-2">
                                     <DatePicker
                                         id={edu.id}
                                         field="startDate"
@@ -761,7 +775,7 @@ export default function PortfolioPage() {
                             </div>
                         </CollapsibleSection>
                         {edu.isCollapsed && (
-                            <div className="flex ml-2 space-x-2 items-center ">
+                            <div className="flex space-x-1 items-center ">
                                 <Button
                                     onClick={() => removeEducation(edu.id)}
                                     variant="destructive"
@@ -795,7 +809,7 @@ export default function PortfolioPage() {
             <div className="space-y-4">
                 <h2 className="text-2xl font-semibold">Achievements</h2>
                 {pfData.achievements.map((achievement, index) => (
-                    <div key={achievement.id} className="flex mb-4">
+                    <div key={achievement.id} className="flex flex-row mb-4">
                         <CollapsibleSection
                             title={achievement.name || 'Untitled Achievement'}
                             isCollapsed={achievement.isCollapsed}
@@ -846,7 +860,7 @@ export default function PortfolioPage() {
                             </div>
                         </CollapsibleSection>
                         {achievement.isCollapsed && (
-                            <div className="flex ml-2 space-x-2 items-center ">
+                            <div className="flex space-x-1 items-center">
                                 <Button
                                     onClick={() => removeAchievement(achievement.id)}
                                     variant="destructive"
