@@ -11,6 +11,7 @@ import SimpleErrorDialog from '@/components/ui/simple-error-dialog';
 import { DatePicker } from '@/components/ui/date-picker';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { useToast } from '@/hooks/use-toast';
+import { GitHubLogoIcon } from '@radix-ui/react-icons';
 
 interface Social {
     platform: string;
@@ -879,6 +880,16 @@ export default function PortfolioPage() {
             <Button onClick={downloadJSON} className="mt-8">
                 <Download className="h-4 w-4 mr-2" /> Download JSON
             </Button>
+
+            <footer className="bg-white rounded-lg shadow m-4 dark:bg-gray-800">
+                <div className="flex flex-col w-full mx-auto max-w-screen-xl p-4 gap-y-2 items-center ">
+                    <span className="flex items-center justify-center space-x-2">
+                        <GitHubLogoIcon className='w-6 h-6'/>
+                        <a href="https://github.com/zacharyLYH/portfolio-as-code" className="hover:underline text-blue-500"> Source code </a>
+                    </span>
+                    <a href="https://zacharyLYH.bio" className="hover:underline text-blue-500 text-sm"> Created by Zachary Lee </a>
+                </div>
+            </footer>
         </div>
     );
 }
