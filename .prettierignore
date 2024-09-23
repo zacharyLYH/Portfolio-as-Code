@@ -1,0 +1,10 @@
+node_modules
+build
+dist
+.next
+*.json
+*.mjs
+*.lockb
+*.md
+*.css
+*.config.ts
