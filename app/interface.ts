@@ -4,33 +4,39 @@ interface Social {
 }
 
 interface JobProject {
+    id: string;
     isJob: boolean;
     title: string;
-    startDate: Date;
+    startDate: Date | null;
     endDate: Date | null;
     isCurrent: boolean;
     description: string;
     links: string[];
     skills: string[];
+    isCollapsed: boolean;
 }
 
 interface Education {
+    id: string;
     institutionName: string;
     courseName: string;
     awarded: string;
-    startDate: Date;
+    startDate: Date | null;
     endDate: Date | null;
     isCurrent: boolean;
     description: string;
     links: string[];
+    isCollapsed: boolean;
 }
 
 interface Achievement {
+    id: string;
     name: string;
     description: string;
-    dateAwarded: Date;
+    dateAwarded: Date | null;
     links: string[];
     skills: string[];
+    isCollapsed: boolean;
 }
 
 interface PortfolioData {
