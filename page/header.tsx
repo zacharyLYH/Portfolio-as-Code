@@ -22,45 +22,36 @@ export default function PortfolioHero({ data }: PortfolioHeroInterface) {
             <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                     <h1 className="text-3xl font-bold tracking-tighter md:text-5xl">{data.name}</h1>
-                    <p className="text-xl text-muted-foreground">{data.title}</p>
+                    <p className="text-xl text-muted-foreground">💼 {data.title}</p>
                     <div className="flex items-center space-x-2 text-muted-foreground">
-                        <MapPin className="h-4 w-4" />
-                        <span>{data.location}</span>
+                        📍 {data.location}
                     </div>
                     <p className="text-sm text-muted-foreground">{data.pronouns}</p>
                 </div>
                 <div className="space-y-2">
-                    <h2 className="text-2xl font-semibold">Short Bio</h2>
+                    <h2 className="text-2xl font-semibold">Short Bio 📚</h2>
                     <p className="text-muted-foreground text-pretty text-sm md:text-xl overflow-hidden text-ellipsis break-words">
                         {data.shortBio}
                     </p>
                 </div>
+                {data.longBio.length > 0 ? 
                 <Accordion type="single" collapsible>
                     <AccordionItem value="item-1">
                         <AccordionTrigger>
-                            <span className="font-bold">More about me!</span>
+                            <span className="font-bold">More about me! 📚📚📚</span>
                         </AccordionTrigger>
                         <AccordionContent>
                             <Card>
                                 <CardContent className="pt-6">
-                                    <p className="text-muted-foreground">
-                                        With over 5 years of experience in the tech industry, I've had the privilege of
-                                        working on a wide range of projects, from small startups to large enterprise
-                                        applications. My expertise lies in full-stack development, with a focus on
-                                        creating scalable and efficient web applications using React, Node.js, and
-                                        various cloud platforms.
-                                    </p>
-                                    <p className="mt-4 text-muted-foreground">
-                                        I'm passionate about clean code, test-driven development, and continuously
-                                        learning new technologies. When I'm not coding, you can find me contributing to
-                                        open-source projects, mentoring junior developers, or speaking at tech
-                                        conferences.
+                                    <p className="text-muted-foreground text-pretty text-sm overflow-hidden text-ellipsis break-words">
+                                        {data.longBio}
                                     </p>
                                 </CardContent>
                             </Card>
                         </AccordionContent>
                     </AccordionItem>
                 </Accordion>
+                : null }
                 <div className="flex flex-col sm:flex-row sm:items-center gap-4">
                     <Button asChild className="w-full sm:w-auto">
                         <a href={data.resumeLink} download>
