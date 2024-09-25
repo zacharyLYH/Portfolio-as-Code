@@ -21,29 +21,15 @@ interface CollapsibleSectionProps {
     onToggle: () => void;
 }
 
-const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
-    title,
-    children,
-    isCollapsed,
-    onToggle,
-  }) => (
+const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({ title, children, isCollapsed, onToggle }) => (
     <div className="border rounded p-4 overflow-hidden md:w-full">
-      <div
-        className="flex justify-between items-center cursor-pointer"
-        onClick={onToggle}
-      >
-        <h3 className="text-lg font-semibold overflow-hidden text-ellipsis ">
-          {title}
-        </h3>
-        {isCollapsed ? (
-          <ChevronDown className="h-4 w-4" />
-        ) : (
-          <ChevronUp className="h-4 w-4" />
-        )}
-      </div>
-      {!isCollapsed && <div className="mt-4">{children}</div>}
+        <div className="flex justify-between items-center cursor-pointer" onClick={onToggle}>
+            <h3 className="text-lg font-semibold overflow-hidden text-ellipsis ">{title}</h3>
+            {isCollapsed ? <ChevronDown className="h-4 w-4" /> : <ChevronUp className="h-4 w-4" />}
+        </div>
+        {!isCollapsed && <div className="mt-4">{children}</div>}
     </div>
-  );
+);
 
 export default function PortfolioPage() {
     const [error, setError] = useState<string | null>(null);
@@ -759,10 +745,19 @@ export default function PortfolioPage() {
             <footer className="bg-white rounded-lg shadow m-4 dark:bg-gray-800">
                 <div className="flex flex-col w-full mx-auto max-w-screen-xl p-4 gap-y-2 items-center ">
                     <span className="flex items-center justify-center space-x-2">
-                        <GitHubLogoIcon className='w-6 h-6'/>
-                        <a href="https://github.com/zacharyLYH/portfolio-as-code" className="hover:underline text-blue-500"> Source code </a>
+                        <GitHubLogoIcon className="w-6 h-6" />
+                        <a
+                            href="https://github.com/zacharyLYH/portfolio-as-code"
+                            className="hover:underline text-blue-500"
+                        >
+                            {' '}
+                            Source code{' '}
+                        </a>
                     </span>
-                    <a href="https://zacharyLYH.bio" className="hover:underline text-blue-500 text-sm"> Created by Zachary Lee </a>
+                    <a href="https://zacharyLYH.bio" className="hover:underline text-blue-500 text-sm">
+                        {' '}
+                        Created by Zachary Lee{' '}
+                    </a>
                 </div>
             </footer>
         </div>
