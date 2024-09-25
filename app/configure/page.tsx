@@ -31,6 +31,8 @@ const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({ title, children
     </div>
 );
 
+const allowedSocials = ['twitter', 'github', 'email', 'instagram', 'facebook', 'linkedin'];
+
 export default function PortfolioPage() {
     const [error, setError] = useState<string | null>(null);
     const [pfData, setPfData] = useState<PortfolioData>({
@@ -74,6 +76,15 @@ export default function PortfolioPage() {
         }
         if (!data.location) {
             return 'Uni name / Company is required.';
+        }
+        for (let index = 0; index < data.socials.length; index++) {
+            const social = data.socials[index];
+            if (!social.platform || !social.url) {
+                return `Social platform name and URL is required at position ${index + 1}.`;
+            }
+            if (!allowedSocials.includes(social.platform.toLowerCase().trim())) {
+                return `Social platform name ${social.platform} isn't recognised.`;
+            }
         }
         for (let index = 0; index < data.jobsProjects.length; index++) {
             const job = data.jobsProjects[index];
@@ -421,6 +432,7 @@ export default function PortfolioPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-semibold">Socials</h2>
+                <p>Available platform: {allowedSocials.map((social) => social).join(',')}</p>
                 {pfData.socials.map((social, index) => (
                     <div key={index} className="flex space-x-2">
                         <Input
