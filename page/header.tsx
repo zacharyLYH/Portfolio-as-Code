@@ -23,9 +23,7 @@ export default function PortfolioHero({ data }: PortfolioHeroInterface) {
                 <div className="space-y-2">
                     <h1 className="text-3xl font-bold tracking-tighter md:text-5xl">{data.name}</h1>
                     <p className="text-xl text-muted-foreground">💼 {data.title}</p>
-                    <div className="flex items-center space-x-2 text-muted-foreground">
-                        📍 {data.location}
-                    </div>
+                    <div className="flex items-center space-x-2 text-muted-foreground">📍 {data.location}</div>
                     <p className="text-sm text-muted-foreground">{data.pronouns}</p>
                 </div>
                 <div className="space-y-2">
@@ -34,24 +32,24 @@ export default function PortfolioHero({ data }: PortfolioHeroInterface) {
                         {data.shortBio}
                     </p>
                 </div>
-                {data.longBio.length > 0 ? 
-                <Accordion type="single" collapsible>
-                    <AccordionItem value="item-1">
-                        <AccordionTrigger>
-                            <span className="font-bold">More about me! 📚📚📚</span>
-                        </AccordionTrigger>
-                        <AccordionContent>
-                            <Card>
-                                <CardContent className="pt-6">
-                                    <p className="text-muted-foreground text-pretty text-sm overflow-hidden text-ellipsis break-words">
-                                        {data.longBio}
-                                    </p>
-                                </CardContent>
-                            </Card>
-                        </AccordionContent>
-                    </AccordionItem>
-                </Accordion>
-                : null }
+                {data.longBio.length > 0 ? (
+                    <Accordion type="single" collapsible>
+                        <AccordionItem value="item-1">
+                            <AccordionTrigger>
+                                <span className="font-bold">More about me! 📚📚📚</span>
+                            </AccordionTrigger>
+                            <AccordionContent>
+                                <Card>
+                                    <CardContent className="pt-6">
+                                        <p className="text-muted-foreground text-pretty text-sm overflow-hidden text-ellipsis break-words">
+                                            {data.longBio}
+                                        </p>
+                                    </CardContent>
+                                </Card>
+                            </AccordionContent>
+                        </AccordionItem>
+                    </Accordion>
+                ) : null}
                 <div className="flex flex-col sm:flex-row sm:items-center gap-4">
                     <Button asChild className="w-full sm:w-auto">
                         <a href={data.resumeLink} download>

@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import Link from 'next/link';
 import PortfolioPage from '../page/header';
+import Experience from '@/page/experience';
 
 export default function Home() {
     const filePath = path.join(process.cwd(), 'portfolio_data.json');
@@ -18,6 +19,7 @@ export default function Home() {
             {portfolioData ? (
                 <div className="container items-center mx-auto my-4 md:my-8">
                     <PortfolioPage data={portfolioData} />
+                    <Experience experiences={portfolioData.jobsProjects.filter((job) => job.isJob)} />
                 </div>
             ) : (
                 <div className="flex items-center justify-center h-screen">
