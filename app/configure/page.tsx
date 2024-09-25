@@ -98,7 +98,7 @@ export default function PortfolioPage() {
                 return `Job/Project start date is required at position ${index + 1}.`;
             }
             if (!job.isCurrent && !job.endDate) {
-                return `Education end date is required if not a current at position ${index + 1}.`;
+                return `Job/Project end date is required if not a current at position ${index + 1}.`;
             }
             if (job.startDate) {
                 job.startDate = getYMD(job.startDate);
