@@ -106,6 +106,13 @@ export default function PortfolioPage() {
             if (job.startDate) {
                 job.endDate = getYMD(job.endDate);
             }
+            data.jobsProjects[index].skills = data.jobsProjects[index].skills.flatMap(
+                (skill) =>
+                    skill
+                        .split(',') // Split each skill string by commas
+                        .map((subSkill) => subSkill.trim()) // Trim each subSkill
+                        .filter((subSkill) => subSkill) // Remove empty strings if any
+            );
         }
         for (let index = 0; index < data.education.length; index++) {
             const edu = data.education[index];
