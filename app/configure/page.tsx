@@ -591,11 +591,6 @@ export default function PortfolioPage() {
                                     onChange={(e) => handleEducationChange(edu.id, 'courseName', e.target.value)}
                                     placeholder="Course Name (Required)"
                                 />
-                                <Input
-                                    value={edu.awarded}
-                                    onChange={(e) => handleEducationChange(edu.id, 'awarded', e.target.value)}
-                                    placeholder="Awarded"
-                                />
                                 <div className="flex flex-col gap-y-2 md: flex-row space-x-2">
                                     <DatePicker
                                         id={edu.id}

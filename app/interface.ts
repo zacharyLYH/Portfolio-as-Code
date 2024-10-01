@@ -20,7 +20,6 @@ interface Education {
     id: string;
     institutionName: string;
     courseName: string;
-    awarded: string;
     startDate: Date | null;
     endDate: Date | null;
     isCurrent: boolean;
