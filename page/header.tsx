@@ -21,7 +21,7 @@ export default function PortfolioHero({ data }: PortfolioHeroInterface) {
         <div className="grid grid-cols-2">
             <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
-                    <h1 className="text-3xl font-bold tracking-tighter md:text-5xl">{data.name}</h1>
+                    <h1 className="text-5xl font-bold tracking-tighter md:text-7xl">{data.name}</h1>
                     <p className="text-xl text-muted-foreground">💼 {data.title}</p>
                     <div className="flex items-center space-x-2 text-muted-foreground">📍 {data.location}</div>
                     <p className="text-sm text-muted-foreground">{data.pronouns}</p>

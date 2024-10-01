@@ -21,10 +21,10 @@ export default function Home() {
         <>
             {portfolioData ? (
                 <div className="container items-center mx-auto my-4 md:my-8">
-                    <PortfolioPage data={portfolioData} />
-                    <Experience experiences={portfolioData.jobsProjects.filter((job) => job.isJob)} />
+                    <PortfolioPage data={portfolioData} /> {/* ssr */}
+                    <Experience experiences={portfolioData.jobsProjects.filter((job) => job.isJob)} /> {/* ssr */}
                     <Projects projects={portfolioData.jobsProjects.filter((job) => !job.isJob)} />
-                    <Education educationItems={portfolioData.education} />
+                    <Education educationItems={portfolioData.education} /> {/* ssr */}
                     <Achievement achievement={portfolioData.achievements} />
                 </div>
             ) : (
@@ -32,7 +32,7 @@ export default function Home() {
                     <p>
                         Failed to load portfolio data. Make sure portfolio_data.json is at the Root of the project
                         directory and is a valid json. Alternatively,{' '}
-                        <Link className="text-blue-500" href="/configure">
+                        <Link className="text-blue-500 hover:underline cursor-pointer" href="/configure">
                             recreate your portfolio json config file
                         </Link>
                         .

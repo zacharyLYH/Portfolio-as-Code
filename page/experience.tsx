@@ -20,7 +20,7 @@ function calculateMonthsSince(startDate: Date): number {
 export default function Experience({ experiences }: { experiences: JobProject[] }) {
     return (
         <div className="my-4 mt-8 space-y-4 md:mt-16">
-            {experiences.length > 0 && <h1 className="text-3xl font-bold tracking-tighter md:text-5xl">Experience</h1>}
+            {experiences.length > 0 && <h1 className="text-3xl font-bold tracking-tighter md:text-5xl">💎 Experience</h1>}
             <div className="space-y-2">
                 {experiences.length > 0 &&
                     experiences.map((exp) => (

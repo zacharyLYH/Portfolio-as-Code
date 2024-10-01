@@ -13,7 +13,7 @@ export default function Education({ educationItems }: EducationPageProps) {
         <div className="my-4 mt-8 space-y-4 md:mt-16">
             {educationItems.length > 0 && (
                 <>
-                    <h1 className="text-3xl font-bold tracking-tighter md:text-5xl">Education</h1>
+                    <h1 className="text-3xl font-bold tracking-tighter md:text-5xl">🎓 Education</h1>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {educationItems.map((item, index) => (
                             <Card key={index} className="overflow-hidden transition-all duration-300 hover:shadow-lg">
