@@ -95,7 +95,7 @@ export default function PortfolioPage() {
             if (job.isJob === undefined) {
                 return `Job/Project type (isJob) is required at position ${index + 1}.`;
             }
-            if(job.description.length === 0) {
+            if (job.description.length === 0) {
                 return `Job/Project description is required at position ${index + 1}.`;
             }
             if (!job.startDate) {

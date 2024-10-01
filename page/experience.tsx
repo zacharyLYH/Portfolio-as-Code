@@ -20,14 +20,16 @@ function calculateMonthsSince(startDate: Date): number {
 export default function Experience({ experiences }: { experiences: JobProject[] }) {
     return (
         <div className="my-4 mt-8 space-y-4 md:mt-16">
-            {experiences.length > 0 && <h1 className="text-3xl font-bold tracking-tighter md:text-5xl">💎 Experience</h1>}
+            {experiences.length > 0 && (
+                <h1 className="text-3xl font-bold tracking-tighter md:text-5xl">💎 Experience</h1>
+            )}
             <div className="space-y-2">
                 {experiences.length > 0 &&
                     experiences.map((exp) => (
                         <Accordion key={exp.id} type="single" collapsible className="w-full md:max-w-screen-xl">
                             <AccordionItem value={exp.id}>
                                 <AccordionTrigger>
-                                    <div className='flex flex-row space-x-4'>
+                                    <div className="flex flex-row space-x-4">
                                         <span className="font-semibold text-xl">{exp.title}</span>
                                         <div className="flex items-center text-sm text-muted-foreground">
                                             <TooltipProvider>
@@ -40,8 +42,8 @@ export default function Experience({ experiences }: { experiences: JobProject[] 
                                                                 {exp.isCurrent
                                                                     ? 'Present'
                                                                     : exp.endDate
-                                                                    ? formatDate(exp.endDate)
-                                                                    : ''}
+                                                                      ? formatDate(exp.endDate)
+                                                                      : ''}
                                                             </span>
                                                         </span>
                                                     </TooltipTrigger>
@@ -72,10 +74,7 @@ export default function Experience({ experiences }: { experiences: JobProject[] 
                                                     <h4 className="text-sm font-semibold mb-2">Links:</h4>
                                                     <ul className="list-disc list-inside">
                                                         {exp.links.map((link, linkIndex) => (
-                                                            <li
-                                                                key={`${link}-${linkIndex}`}
-                                                                className="flex text-sm"
-                                                            >
+                                                            <li key={`${link}-${linkIndex}`} className="flex text-sm">
                                                                 <a
                                                                     href={link}
                                                                     target="_blank"
