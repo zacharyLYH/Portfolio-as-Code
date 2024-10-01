@@ -83,7 +83,7 @@ export default function Experience({ experiences }: { experiences: JobProject[] 
                                                                         href={link}
                                                                         target="_blank"
                                                                         rel="noopener noreferrer"
-                                                                        className="text-primary hover:underline flex items-center text-blue-700"
+                                                                        className="text-primary hover:underline flex items-center hover:text-blue-700"
                                                                     >
                                                                         <LinkIcon className="h-3 w-3 mr-2" />
                                                                         {link}
