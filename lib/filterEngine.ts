@@ -1,44 +1,35 @@
-interface FilterCriteria {
-    skills?: string[];
-    dateRange?: { startDate: Date; endDate: Date };
-    keywords?: string[];
-}
-
-// Helper function to check date range overlap
 function isInRange(criteria: FilterCriteria, itemStartDate: Date | null, itemEndDate: Date | null) {
-    if (!criteria.dateRange) return true;
+    const { startDate, endDate } = criteria;
+    if (!startDate && !endDate) return true;
 
-    const { startDate, endDate } = criteria.dateRange;
-    const itemStart = itemStartDate || new Date(0); // If no start date, consider as early as possible
-    const itemEnd = itemEndDate || new Date(); // If no end date, consider as present
+    const itemStart = itemStartDate || new Date(0);
+    const itemEnd = itemEndDate || new Date();
 
-    // Check if the item is within the specified date range
     return (
-        (itemStart <= endDate && itemStart >= startDate) || // Item starts within the range
-        (itemEnd >= startDate && itemEnd <= endDate) || // Item ends within the range
-        (itemStart <= startDate && itemEnd >= endDate) // Item spans the entire range
+        (startDate && itemStart >= startDate && itemStart <= (endDate || new Date())) ||
+        (endDate && itemEnd <= endDate && itemEnd >= (startDate || new Date())) ||
+        (startDate && endDate && itemStart <= startDate && itemEnd >= endDate)
     );
 }
 
-// Helper function to check for keyword match in title or description
 function containsKeywords(criteria: FilterCriteria, item: { title: string; description: string }) {
-    if (!criteria.keywords || criteria.keywords.length === 0) return true;
-    const keywordsLower = criteria.keywords.map((k) => k.toLowerCase());
+    if (!criteria.keyword || criteria.keyword.length === 0) return true;
+    const keywordLower = criteria.keyword.toLowerCase();
     const title = item.title.toLowerCase();
     const description = item.description.toLowerCase();
-
-    return keywordsLower.some((keyword) => title.includes(keyword) || description.includes(keyword));
+    return title.includes(keywordLower) || description.includes(keywordLower);
 }
 
-// Helper function to check if the item contains any of the specified skills
 function containsSkills(criteria: FilterCriteria, itemSkills: string[]) {
-    if (!criteria.skills || criteria.skills.length === 0) return true;
-    return criteria.skills.some((skill) => itemSkills.map((s) => s.toLowerCase()).includes(skill.toLowerCase()));
+    if (!criteria.selectedSkills || criteria.selectedSkills.length === 0) return true;
+    return criteria.selectedSkills.some((skill) =>
+        itemSkills.map((s) => s.toLowerCase()).includes(skill.toLowerCase())
+    );
 }
 
-function filterPortfolioData(portfolioData: PortfolioData, criteria: FilterCriteria): string[] {
+function filterPortfolioData(portfolioData: ReducedPortfolioData, criteria: FilterCriteria): string[] {
     let resultIds: string[] = [];
-    // Filter the job projects
+
     portfolioData.jobsProjects.forEach((project) => {
         if (
             containsSkills(criteria, project.skills) &&
@@ -49,10 +40,9 @@ function filterPortfolioData(portfolioData: PortfolioData, criteria: FilterCrite
         }
     });
 
-    // Filter the education items
     portfolioData.education.forEach((education) => {
         if (
-            containsSkills(criteria, education.links) && // For education, links might contain relevant resources/skills
+            containsSkills(criteria, education.links) &&
             isInRange(criteria, education.startDate, education.endDate) &&
             containsKeywords(criteria, { title: education.institutionName, description: education.description })
         ) {
@@ -60,11 +50,10 @@ function filterPortfolioData(portfolioData: PortfolioData, criteria: FilterCrite
         }
     });
 
-    // Filter the achievements
     portfolioData.achievements.forEach((achievement) => {
         if (
             containsSkills(criteria, achievement.skills) &&
-            isInRange(criteria, achievement.dateAwarded, null) && // For achievements, only one date (dateAwarded)
+            isInRange(criteria, achievement.dateAwarded, null) &&
             containsKeywords(criteria, { title: achievement.name, description: achievement.description })
         ) {
             resultIds.push(achievement.id);
