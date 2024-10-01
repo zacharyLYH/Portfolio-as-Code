@@ -6,6 +6,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Badge } from '@/components/ui/badge';
 import { Calendar, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 interface ProjectsInterface {
     projects: JobProject[];
@@ -54,34 +55,57 @@ export default function Projects({ projects }: ProjectsInterface) {
 }
 
 function ProjectCard({ project }: { project: JobProject }) {
+    const [isHovered, setIsHovered] = useState(false);
     return (
-        <Card className="flex flex-col justify-between h-full">
-            <CardHeader>
-                <CardTitle>{project.title}</CardTitle>
-            </CardHeader>
-            <CardContent>
-                <div className="flex flex-wrap gap-2">
-                    {project.skills.map((skill, index) => (
-                        <Badge key={index} variant="secondary">
-                            {skill}
-                        </Badge>
-                    ))}
-                </div>
-            </CardContent>
-            <CardFooter className="mt-auto">
-                <Dialog>
-                    <DialogTrigger asChild>
-                        <Button variant="outline">View Details</Button>
-                    </DialogTrigger>
-                    <DialogContent className="bg-white">
-                        <DialogHeader>
-                            <DialogTitle className="font-bold md:text-2xl">{project.title}</DialogTitle>
-                        </DialogHeader>
-                        <ProjectDetails project={project} />
-                    </DialogContent>
-                </Dialog>
-            </CardFooter>
-        </Card>
+        <motion.div
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: 'spring', stiffness: 100 }}
+            onHoverStart={() => setIsHovered(true)}
+            onHoverEnd={() => setIsHovered(false)}
+        >
+            <Card className="flex flex-col justify-between h-full overflow-hidden bg-gradient-to-br from-white to-gray-100  border-2 border-transparent transition-all duration-300 hover:border-purple-400 ">
+                <CardHeader className="relative overflow-hidden">
+                    <div
+                        className="absolute inset-0 bg-gradient-to-r rounded-xl m-2 from-purple-500 to-pink-500 opacity-75 transition-opacity duration-300"
+                        style={{ opacity: isHovered ? 0.2 : 0 }}
+                    />
+                    <CardTitle className="relative z-10 text-xl md:text-2xl font-bold text-gray-800 dark:text-white">
+                        {project.title}
+                    </CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <div className="flex flex-wrap gap-2">
+                        {project.skills.slice(0, 3).map((skill, index) => (
+                            <Badge key={index} variant="secondary" className="bg-gray-200 text-gray-700 ">
+                                {skill}
+                            </Badge>
+                        ))}
+                        {project.skills.length > 3 && (
+                            <Badge variant="secondary" className="bg-gray-200 text-gray-700 ">
+                                +{project.skills.length - 3} more
+                            </Badge>
+                        )}
+                    </div>
+                </CardContent>
+                <CardFooter className="mt-auto">
+                    <Dialog>
+                        <DialogTrigger asChild>
+                            <Button className="w-full bg-black hover:bg-purple-500 hover:text-white transition-colors duration-300">
+                                View Details
+                            </Button>
+                        </DialogTrigger>
+                        <DialogContent className="bg-white dark:bg-gray-800 max-w-md md:max-w-lg">
+                            <DialogHeader>
+                                <DialogTitle className="font-bold text-2xl md:text-3xl text-gray-800 dark:text-white">
+                                    {project.title}
+                                </DialogTitle>
+                            </DialogHeader>
+                            <ProjectDetails project={project} />
+                        </DialogContent>
+                    </Dialog>
+                </CardFooter>
+            </Card>
+        </motion.div>
     );
 }
 
