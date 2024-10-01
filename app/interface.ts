@@ -59,3 +59,10 @@ interface ReducedPortfolioData {
     education: Education[];
     achievements: Achievement[];
 }
+
+interface FilterCriteria {
+    selectedSkills?: string[];
+    startDate?: Date;
+    endDate?: Date;
+    keyword?: string;
+}
