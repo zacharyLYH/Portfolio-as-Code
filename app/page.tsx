@@ -5,6 +5,7 @@ import Link from 'next/link';
 import PortfolioPage from '../page/header';
 import Experience from '@/page/experience';
 import Projects from '@/page/projects';
+import Education from '@/page/education';
 
 export default function Home() {
     const filePath = path.join(process.cwd(), 'portfolio_data.json');
@@ -22,6 +23,7 @@ export default function Home() {
                     <PortfolioPage data={portfolioData} />
                     <Experience experiences={portfolioData.jobsProjects.filter((job) => job.isJob)} />
                     <Projects projects={portfolioData.jobsProjects.filter((job) => !job.isJob)} />
+                    <Education educationItems={portfolioData.education} />
                 </div>
             ) : (
                 <div className="flex items-center justify-center h-screen">
