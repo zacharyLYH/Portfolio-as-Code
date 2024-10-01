@@ -53,6 +53,7 @@ export default function CustomSpotlight({
                 setSelectedSkills([]);
                 setKeyword('');
                 onClose();
+                setSearchResults([]);
             }
         };
 
