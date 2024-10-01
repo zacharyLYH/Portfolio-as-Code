@@ -27,7 +27,7 @@ function containsSkills(criteria: FilterCriteria, itemSkills: string[]) {
     );
 }
 
-function filterPortfolioData(portfolioData: ReducedPortfolioData, criteria: FilterCriteria): string[] {
+function filterPortfolioData(portfolioData: PortfolioData, criteria: FilterCriteria): string[] {
     let resultIds: string[] = [];
 
     portfolioData.jobsProjects.forEach((project) => {

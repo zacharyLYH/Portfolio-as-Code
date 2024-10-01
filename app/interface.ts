@@ -54,12 +54,6 @@ interface PortfolioData {
     achievements: Achievement[];
 }
 
-interface ReducedPortfolioData {
-    jobsProjects: JobProject[];
-    education: Education[];
-    achievements: Achievement[];
-}
-
 interface FilterCriteria {
     selectedSkills?: string[];
     startDate?: Date;

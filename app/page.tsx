@@ -13,17 +13,11 @@ import Filter from '@/page/filter';
 export default function Home() {
     const filePath = path.join(process.cwd(), 'portfolio_data.json');
     let portfolioData: PortfolioData | null = null;
-    let reducedPortfolioData: ReducedPortfolioData | null = null;
     let skills: string[] = [];
     const skillsSet = new Set<string>();
     try {
         const fileContent = fs.readFileSync(filePath, 'utf-8');
         portfolioData = parsePortfolioData(JSON.parse(fileContent));
-        reducedPortfolioData = {
-            achievements: portfolioData.achievements,
-            education: portfolioData.education,
-            jobsProjects: portfolioData.jobsProjects,
-        };
         portfolioData.achievements.forEach((achievement) => {
             achievement.skills.forEach((skill) => skillsSet.add(skill));
         });
@@ -46,7 +40,7 @@ export default function Home() {
                     <Education educationItems={portfolioData.education} /> {/* ssr */}
                     <Achievement achievement={portfolioData.achievements} />
                     <Footer />
-                    <Filter portfolioData={reducedPortfolioData} skills={skills} />
+                    <Filter portfolioData={portfolioData} skills={skills} />
                 </div>
             ) : (
                 <div className="flex items-center justify-center h-screen">

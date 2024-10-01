@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { FilterIcon } from 'lucide-react';
 
 interface FilterProps {
-    portfolioData: ReducedPortfolioData | null;
+    portfolioData: PortfolioData | null;
     skills: string[];
 }
 
