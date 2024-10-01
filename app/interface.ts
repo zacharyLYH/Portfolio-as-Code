@@ -53,3 +53,9 @@ interface PortfolioData {
     education: Education[];
     achievements: Achievement[];
 }
+
+interface ReducedPortfolioData {
+    jobsProjects: JobProject[];
+    education: Education[];
+    achievements: Achievement[];
+}
