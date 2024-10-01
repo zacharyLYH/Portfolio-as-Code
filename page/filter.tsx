@@ -12,9 +12,11 @@ interface FilterProps {
 
 export default function Filter({ portfolioData, skills }: FilterProps) {
     const [isSpotlightOpen, setIsSpotlightOpen] = useState(false);
+    const [results, setResults] = useState<SearchResultRecord[]>([]);
 
     const handleSearch = (params: FilterCriteria) => {
-        // filterPortfolioData(portfolioData!, params);
+        const resultIds = filterPortfolioData(portfolioData!, params);
+        setResults(resultIds);
         //debug
         console.log(params);
     };
@@ -24,15 +26,23 @@ export default function Filter({ portfolioData, skills }: FilterProps) {
             {portfolioData && (
                 <div className="fixed bottom-[2vh] right-[2vw] z-50 md:bottom-8 md:right-8">
                     {!isSpotlightOpen && (
-                        <Button onClick={() => setIsSpotlightOpen(true)} className="rounded-full shadow-lg animate-bounce w-12 h-12 lg:w-20 lg:h-20">
+                        <Button
+                            onClick={() => setIsSpotlightOpen(true)}
+                            className="rounded-full shadow-lg animate-bounce w-12 h-12 lg:w-20 lg:h-20"
+                        >
                             <FilterIcon className="h-6 w-6" />
                         </Button>
                     )}
                     <CustomSpotlight
                         isOpen={isSpotlightOpen}
-                        onClose={() => setIsSpotlightOpen(false)}
+                        onClose={() => {
+                            setIsSpotlightOpen(false);
+                            setResults([]);
+                        }}
                         onSearch={handleSearch}
                         skills={skills}
+                        searchResults={results}
+                        setSearchResults={setResults}
                     />
                 </div>
             )}

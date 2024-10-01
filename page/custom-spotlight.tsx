@@ -1,14 +1,22 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, SetStateAction, Dispatch } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import { Command, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem } from '@/components/ui/command';
-import { CalendarIcon, X } from 'lucide-react';
+import {
+    Command,
+    CommandInput,
+    CommandList,
+    CommandEmpty,
+    CommandGroup,
+    CommandItem,
+    CommandSeparator,
+} from '@/components/ui/command';
+import { CalendarIcon, SearchCheck, Trash2, X } from 'lucide-react';
 import { format } from 'date-fns';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
@@ -17,9 +25,18 @@ interface CustomSpotlightProps {
     onClose: () => void;
     onSearch: (params: FilterCriteria) => void;
     skills: string[];
+    searchResults: SearchResultRecord[];
+    setSearchResults: Dispatch<SetStateAction<SearchResultRecord[]>>;
 }
 
-export default function CustomSpotlight({ isOpen, onClose, onSearch, skills }: CustomSpotlightProps) {
+export default function CustomSpotlight({
+    isOpen,
+    onClose,
+    onSearch,
+    skills,
+    searchResults,
+    setSearchResults,
+}: CustomSpotlightProps) {
     const [keyword, setKeyword] = useState('');
     const [startDate, setStartDate] = useState<Date>();
     const [endDate, setEndDate] = useState<Date>();
@@ -52,6 +69,14 @@ export default function CustomSpotlight({ isOpen, onClose, onSearch, skills }: C
         onSearch({ keyword, startDate, endDate, selectedSkills });
     };
 
+    const handleClear = () => {
+        setStartDate(undefined);
+        setEndDate(undefined);
+        setSelectedSkills([]);
+        setKeyword('');
+        setSearchResults([]);
+    };
+
     const handleSkillToggle = (skillId: string) => {
         setSelectedSkills((prev) =>
             prev.includes(skillId) ? prev.filter((id) => id !== skillId) : [...prev, skillId]
@@ -80,21 +105,16 @@ export default function CustomSpotlight({ isOpen, onClose, onSearch, skills }: C
                             </Button>
                         </div>
                         <div className="p-4 space-y-4 mt-8">
-                            <TooltipWrapper text="Keyword Search" content="Type a word/letter/phrase" />
-                            <div className="flex flex-row space-x-4">
-                                <Input
-                                    type="text"
-                                    placeholder="🔎..."
-                                    value={keyword}
-                                    onChange={(e) => setKeyword(e.target.value)}
-                                    className="flex-grow text-md"
-                                    autoFocus
-                                />
-                                <Button onClick={handleSearch} className="bg-blue-500 hover:bg-blue-600 text-white">
-                                    Search
-                                </Button>
-                            </div>
-                            <TooltipWrapper text="Date Ranges" content="Filter by date range." />
+                            <TooltipWrapper text="🔑 Keyword Search" content="Type a word/letter/phrase" />
+                            <Input
+                                type="text"
+                                placeholder="🔎..."
+                                value={keyword}
+                                onChange={(e) => setKeyword(e.target.value)}
+                                className="flex-grow text-md"
+                                autoFocus
+                            />
+                            <TooltipWrapper text="#️⃣ Date Ranges" content="Filter by date range." />
                             <div className="flex flex-row gap-2">
                                 <Popover>
                                     <PopoverTrigger asChild>
@@ -132,7 +152,7 @@ export default function CustomSpotlight({ isOpen, onClose, onSearch, skills }: C
                             </div>
                             {skills && (
                                 <>
-                                    <TooltipWrapper text="Skills" content="Select skills to filter by" />
+                                    <TooltipWrapper text="🧠 Skills" content="Select skills to filter by" />
                                     <div className="flex flex-wrap gap-2 max-h-64 overflow-y-auto">
                                         {skills.map((skill) => (
                                             <Badge
@@ -148,15 +168,60 @@ export default function CustomSpotlight({ isOpen, onClose, onSearch, skills }: C
                                 </>
                             )}
                         </div>
-
-                        {/* <Command className="rounded-lg border shadow-md">
-            <CommandInput placeholder="Type a command or search..." />
-            <CommandList>
-                <CommandEmpty>
-                No results found.
-            </CommandEmpty>
-            </CommandList>
-            </Command> */}
+                        <div className="flex flex-row gap-2 p-5">
+                            <Button variant="default" onClick={handleSearch} className="w-full hover:bg-purple-500">
+                                <SearchCheck className="w-4 h-4 mr-2" /> Search
+                            </Button>
+                            <Button variant="destructive" onClick={handleClear} className="w-full hover:bg-red-700">
+                                <Trash2 className="w-4 h-4 mr-2" /> Clear
+                            </Button>
+                        </div>
+                        <Command className="rounded-lg border shadow-md">
+                            <CommandList>
+                                {searchResults.length == 0 ? (
+                                    <CommandEmpty>No results found.</CommandEmpty>
+                                ) : (
+                                    <>
+                                        {searchResults.filter((item) => item.type === 'jobProjects').length > 0 && (
+                                            <>
+                                                <CommandGroup heading="💎 Experience/Projects">
+                                                    {searchResults
+                                                        .filter((item) => item.type === 'jobProjects')
+                                                        .map((item) => (
+                                                            <CommandItemWrapper item={item} />
+                                                        ))}
+                                                </CommandGroup>
+                                                <CommandSeparator />
+                                            </>
+                                        )}
+                                        {searchResults.filter((item) => item.type === 'education').length > 0 && (
+                                            <>
+                                                <CommandGroup heading="🎓 Education">
+                                                    {searchResults
+                                                        .filter((item) => item.type === 'education')
+                                                        .map((item) => (
+                                                            <CommandItemWrapper item={item} />
+                                                        ))}
+                                                </CommandGroup>
+                                                <CommandSeparator />
+                                            </>
+                                        )}
+                                        {searchResults.filter((item) => item.type === 'achievements').length > 0 && (
+                                            <>
+                                                <CommandGroup heading="🎉 Achievements">
+                                                    {searchResults
+                                                        .filter((item) => item.type === 'achievements')
+                                                        .map((item) => (
+                                                            <CommandItemWrapper item={item} />
+                                                        ))}
+                                                </CommandGroup>
+                                                <CommandSeparator />
+                                            </>
+                                        )}
+                                    </>
+                                )}
+                            </CommandList>
+                        </Command>
                     </motion.div>
                 </motion.div>
             )}
@@ -174,5 +239,16 @@ function TooltipWrapper({ text, content }: { text: string; content: string }) {
                 </TooltipContent>
             </Tooltip>
         </TooltipProvider>
+    );
+}
+
+function CommandItemWrapper({ item }: { item: SearchResultRecord }) {
+    return (
+        <CommandItem key={item.id}>
+            <div className="grid grid-cols-2 w-full">
+                <span className="font-semibold truncate">{item.header}</span>
+                <span className="text-sm truncate">{item.body}</span>
+            </div>
+        </CommandItem>
     );
 }

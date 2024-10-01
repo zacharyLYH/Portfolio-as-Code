@@ -27,8 +27,8 @@ function containsSkills(criteria: FilterCriteria, itemSkills: string[]) {
     );
 }
 
-function filterPortfolioData(portfolioData: PortfolioData, criteria: FilterCriteria): string[] {
-    let resultIds: string[] = [];
+export function filterPortfolioData(portfolioData: PortfolioData, criteria: FilterCriteria): SearchResultRecord[] {
+    let resultIds: SearchResultRecord[] = [];
 
     portfolioData.jobsProjects.forEach((project) => {
         if (
@@ -36,7 +36,12 @@ function filterPortfolioData(portfolioData: PortfolioData, criteria: FilterCrite
             isInRange(criteria, project.startDate, project.endDate) &&
             containsKeywords(criteria, { title: project.title, description: project.description })
         ) {
-            resultIds.push(project.id);
+            resultIds.push({
+                type: 'jobProjects',
+                id: project.id,
+                header: project.title,
+                body: project.description,
+            });
         }
     });
 
@@ -46,7 +51,12 @@ function filterPortfolioData(portfolioData: PortfolioData, criteria: FilterCrite
             isInRange(criteria, education.startDate, education.endDate) &&
             containsKeywords(criteria, { title: education.institutionName, description: education.description })
         ) {
-            resultIds.push(education.id);
+            resultIds.push({
+                type: 'education',
+                id: education.id,
+                header: education.courseName,
+                body: education.description,
+            });
         }
     });
 
@@ -56,7 +66,12 @@ function filterPortfolioData(portfolioData: PortfolioData, criteria: FilterCrite
             isInRange(criteria, achievement.dateAwarded, null) &&
             containsKeywords(criteria, { title: achievement.name, description: achievement.description })
         ) {
-            resultIds.push(achievement.id);
+            resultIds.push({
+                type: 'achievements',
+                id: achievement.id,
+                header: achievement.name,
+                body: achievement.description,
+            });
         }
     });
 

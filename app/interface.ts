@@ -60,3 +60,10 @@ interface FilterCriteria {
     endDate?: Date;
     keyword?: string;
 }
+
+interface SearchResultRecord {
+    type: string;
+    id: string;
+    header: string;
+    body: string;
+}
