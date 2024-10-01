@@ -7,6 +7,7 @@ import Experience from '@/page/experience';
 import Projects from '@/page/projects';
 import Education from '@/page/education';
 import Achievement from '@/page/achievement';
+import Footer from '@/page/footer';
 
 export default function Home() {
     const filePath = path.join(process.cwd(), 'portfolio_data.json');
@@ -26,6 +27,7 @@ export default function Home() {
                     <Projects projects={portfolioData.jobsProjects.filter((job) => !job.isJob)} />
                     <Education educationItems={portfolioData.education} /> {/* ssr */}
                     <Achievement achievement={portfolioData.achievements} />
+                    <Footer />
                 </div>
             ) : (
                 <div className="flex items-center justify-center h-screen">
