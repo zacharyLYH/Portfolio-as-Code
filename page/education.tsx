@@ -38,7 +38,7 @@ export default function Education({ educationItems }: EducationPageProps) {
                                         <div className="space-y-2">
                                             <Sheet key={item.id}>
                                                 <SheetTrigger asChild>
-                                                    <Button variant="outline">Details</Button>
+                                                    <Button variant="default">👀 Details</Button>
                                                 </SheetTrigger>
                                                 <SheetContent className="w-[400px] md:w-1/2 bg-white">
                                                     <SheetHeader className="mb-5">
