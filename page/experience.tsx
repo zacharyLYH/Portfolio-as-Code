@@ -3,12 +3,8 @@ import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-
+import { formatDate } from '@/lib/utils';
 import { CalendarIcon, LinkIcon } from 'lucide-react';
-
-function formatDate(date: Date): string {
-    return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
-}
 
 function calculateMonthsSince(startDate: Date): number {
     const now = new Date();

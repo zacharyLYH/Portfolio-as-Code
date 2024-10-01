@@ -2,13 +2,10 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { School, Calendar, Text, LinkIcon } from 'lucide-react';
+import { formatDate } from '@/lib/utils';
 
 interface EducationPageProps {
     educationItems: Education[];
-}
-
-function formatDate(date: Date): string {
-    return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
 }
 
 export default function Education({ educationItems }: EducationPageProps) {

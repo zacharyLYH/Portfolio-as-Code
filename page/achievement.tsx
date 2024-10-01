@@ -6,13 +6,10 @@ import Autoplay from 'embla-carousel-autoplay';
 import { Badge } from '@/components/ui/badge';
 import { Calendar, LinkIcon } from 'lucide-react';
 import { useRef } from 'react';
+import { formatDate } from '@/lib/utils';
 
 interface AchievementPageProps {
     achievement: Achievement[];
-}
-
-function formatDate(date: Date): string {
-    return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
 }
 
 export default function Achievement({ achievement }: AchievementPageProps) {
