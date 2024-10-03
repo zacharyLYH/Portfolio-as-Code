@@ -29,7 +29,7 @@ function containsSkills(criteria: FilterCriteria, itemSkills: string[]) {
 }
 
 export function filterPortfolioData(portfolioData: PortfolioData, criteria: FilterCriteria): SearchResultRecord[] {
-    let resultIds: SearchResultRecord[] = [];
+    const resultIds: SearchResultRecord[] = [];
 
     portfolioData.jobsProjects.forEach((project) => {
         if (
