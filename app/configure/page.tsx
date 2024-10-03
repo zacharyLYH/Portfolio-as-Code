@@ -11,8 +11,8 @@ import SimpleErrorDialog from '@/components/ui/simple-error-dialog';
 import { DatePicker } from '@/components/ui/date-picker';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { useToast } from '@/hooks/use-toast';
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Separator } from "@/components/ui/separator"
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
 import { parsePortfolioData } from '@/lib/parseJson';
 import Footer from '@/page/footer';
 
@@ -763,42 +763,63 @@ export default function PortfolioPage() {
                 <Download className="h-4 w-4 mr-2" /> Download JSON
             </Button>
 
-            {downloaded && 
+            {downloaded && (
                 <Card className="w-full max-w-3xl mx-auto">
-                <CardHeader>
-                  <CardTitle className="text-3xl font-bold tracking-tighter md:text-5xl text-center">
-                    Ready for the next step? 🎉
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  <ol className="list-decimal list-inside space-y-4">
-                    <li className="text-lg">
-                      <span className="font-medium">Name of file <strong className="text-primary">MUST</strong> be called </span>
-                      <code className="px-2 py-1 bg-muted rounded-md text-sm">portfolio_data.json</code>
-                      <p className="mt-2 text-sm text-muted-foreground">
-                        The default name should already be correct. If there are multiple of these config files, your OS might prepend numbers to deduplicate. You must remove the numbers and call the file exactly as <code className="px-1 py-0.5 bg-muted rounded-sm text-xs">portfolio_data.json</code>.
-                      </p>
-                    </li>
-                    <Separator className="my-4" />
-                    <li className="text-lg">
-                      <span className="font-medium">Move </span>
-                      <code className="px-2 py-1 bg-muted rounded-md text-sm">portfolio_data.json</code>
-                      <span className="font-medium"> into the <strong className="text-primary">root</strong> directory of this project.</span>
-                    </li>
-                    <Separator className="my-4" />
-                    <li className="text-lg">
-                      <span className="font-medium">Host it! For the most foolproof experience, we suggest </span>
-                      <a href="https://medium.com/@hikmohadetunji/hosting-your-first-website-on-vercel-a-step-by-step-guide-95061f1ca687" className="text-blue-500 hover:text-blue-800 hover:underline">Vercel</a>.
-                    </li>
-                    <Separator className="my-4" />
-                    <li className="text-lg">
-                      <span className="font-medium">(Optional) In an environment variable, provide a page title to populate the browser tab's title. The variable must be called </span>
-                      <code className="px-2 py-1 bg-muted rounded-md text-sm">NEXT_PUBLIC_WEBPAGE_TITLE</code>.
-                    </li>
-                  </ol>
-                </CardContent>
-              </Card>
-            }
+                    <CardHeader>
+                        <CardTitle className="text-3xl font-bold tracking-tighter md:text-5xl text-center">
+                            Ready for the next step? 🎉
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-6">
+                        <ol className="list-decimal list-inside space-y-4">
+                            <li className="text-lg">
+                                <span className="font-medium">
+                                    Name of file <strong className="text-primary">MUST</strong> be called{' '}
+                                </span>
+                                <code className="px-2 py-1 bg-muted rounded-md text-sm">portfolio_data.json</code>
+                                <p className="mt-2 text-sm text-muted-foreground">
+                                    The default name should already be correct. If there are multiple of these config
+                                    files, your OS might prepend numbers to deduplicate. You must remove the numbers and
+                                    call the file exactly as{' '}
+                                    <code className="px-1 py-0.5 bg-muted rounded-sm text-xs">portfolio_data.json</code>
+                                    .
+                                </p>
+                            </li>
+                            <Separator className="my-4" />
+                            <li className="text-lg">
+                                <span className="font-medium">Move </span>
+                                <code className="px-2 py-1 bg-muted rounded-md text-sm">portfolio_data.json</code>
+                                <span className="font-medium">
+                                    {' '}
+                                    into the <strong className="text-primary">root</strong> directory of this project.
+                                </span>
+                            </li>
+                            <Separator className="my-4" />
+                            <li className="text-lg">
+                                <span className="font-medium">
+                                    Host it! For the most foolproof experience, we suggest{' '}
+                                </span>
+                                <a
+                                    href="https://medium.com/@hikmohadetunji/hosting-your-first-website-on-vercel-a-step-by-step-guide-95061f1ca687"
+                                    className="text-blue-500 hover:text-blue-800 hover:underline"
+                                >
+                                    Vercel
+                                </a>
+                                .
+                            </li>
+                            <Separator className="my-4" />
+                            <li className="text-lg">
+                                <span className="font-medium">
+                                    (Optional) In an environment variable, provide a page title to populate the browser
+                                    tab's title. The variable must be called{' '}
+                                </span>
+                                <code className="px-2 py-1 bg-muted rounded-md text-sm">NEXT_PUBLIC_WEBPAGE_TITLE</code>
+                                .
+                            </li>
+                        </ol>
+                    </CardContent>
+                </Card>
+            )}
 
             <Footer />
         </div>

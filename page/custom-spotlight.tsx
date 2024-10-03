@@ -43,7 +43,7 @@ export default function CustomSpotlight({
     const handleSearch = () => {
         onSearch({ keyword, startDate, endDate, selectedSkills });
     };
-    
+
     const closeFilterComponent = () => {
         setStartDate(undefined);
         setEndDate(undefined);
@@ -51,7 +51,7 @@ export default function CustomSpotlight({
         setKeyword('');
         onClose();
         setSearchResults([]);
-    }
+    };
 
     const handleKeyDown = useCallback(
         (event: KeyboardEvent) => {
@@ -108,11 +108,11 @@ export default function CustomSpotlight({
         <AnimatePresence>
             {isOpen && (
                 <motion.div
-                initial={{ opacity: 0, scale: 0.9, y: -10 }}  
-                animate={{ opacity: 1, scale: 1, y: 0 }} 
-                exit={{ opacity: 0, scale: 0.9, y: -10 }} 
-                transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }} 
-                className="fixed inset-0 bg-black bg-opacity-50 flex items-start justify-center pt-20 px-4 z-50"
+                    initial={{ opacity: 0, scale: 0.9, y: -10 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.9, y: -10 }}
+                    transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                    className="fixed inset-0 bg-black bg-opacity-50 flex items-start justify-center pt-20 px-4 z-50"
                 >
                     <motion.div
                         ref={spotlightRef}

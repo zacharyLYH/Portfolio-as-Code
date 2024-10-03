@@ -14,7 +14,7 @@ const socialIcons = {
     twitter: TwitterLogoIcon,
     linkedin: Linkedin,
     email: Mail,
-    instagram: InstagramLogoIcon
+    instagram: InstagramLogoIcon,
 };
 
 export default function PortfolioHero({ data }: PortfolioHeroInterface) {
