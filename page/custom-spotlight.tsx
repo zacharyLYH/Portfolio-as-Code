@@ -10,6 +10,7 @@ import { Badge } from '@/components/ui/badge';
 import { CalendarIcon, SearchCheck, Trash2, X } from 'lucide-react';
 import { format } from 'date-fns';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/resizable';
 
 interface CustomSpotlightProps {
     isOpen: boolean;
@@ -102,7 +103,7 @@ export default function CustomSpotlight({
                 >
                     <motion.div
                         ref={spotlightRef}
-                        className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl w-full max-w-2xl overflow-hidden"
+                        className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl w-full max-w-2xl h-[80vh] flex flex-col overflow-hidden"
                         initial={{ scale: 0.9 }}
                         animate={{ scale: 1 }}
                         exit={{ scale: 0.9 }}
@@ -112,124 +113,159 @@ export default function CustomSpotlight({
                                 <X className="h-6 w-6" />
                             </Button>
                         </div>
-                        <div className="p-4 space-y-4 mt-8">
-                            <TooltipWrapper text="🔑 Keyword Search" content="Type a word/letter/phrase" />
-                            <Input
-                                type="text"
-                                placeholder="🔎..."
-                                value={keyword}
-                                onChange={(e) => setKeyword(e.target.value)}
-                                className="flex-grow text-md"
-                                autoFocus
-                            />
-                            <TooltipWrapper text="#️⃣ Date Ranges" content="Filter by date range." />
-                            <div className="flex flex-row gap-2">
-                                <Popover>
-                                    <PopoverTrigger asChild>
-                                        <Button
-                                            variant="outline"
-                                            className="w-[240px] justify-start text-left font-normal"
-                                        >
-                                            <CalendarIcon className="mr-2 h-4 w-4" />
-                                            {startDate ? format(startDate, 'PPP') : <span>Start Date</span>}
-                                        </Button>
-                                    </PopoverTrigger>
-                                    <PopoverContent className="w-auto p-0" align="start">
-                                        <Calendar
-                                            mode="single"
-                                            selected={startDate}
-                                            onSelect={setStartDate}
-                                            initialFocus
-                                        />
-                                    </PopoverContent>
-                                </Popover>
-                                <Popover>
-                                    <PopoverTrigger asChild>
-                                        <Button
-                                            variant="outline"
-                                            className="w-[240px] justify-start text-left font-normal"
-                                        >
-                                            <CalendarIcon className="mr-2 h-4 w-4" />
-                                            {endDate ? format(endDate, 'PPP') : <span>End Date</span>}
-                                        </Button>
-                                    </PopoverTrigger>
-                                    <PopoverContent className="w-auto p-0" align="start">
-                                        <Calendar mode="single" selected={endDate} onSelect={setEndDate} initialFocus />
-                                    </PopoverContent>
-                                </Popover>
-                            </div>
-                            {skills && (
-                                <>
-                                    <TooltipWrapper text="🧠 Skills" content="Select skills to filter by" />
-                                    <div className="flex flex-wrap gap-2 max-h-64 overflow-y-auto">
-                                        {skills.map((skill) => (
-                                            <Badge
-                                                key={skill}
-                                                variant={selectedSkills.includes(skill) ? 'default' : 'outline'}
-                                                className="cursor-pointer"
-                                                onClick={() => handleSkillToggle(skill)}
-                                            >
-                                                {skill}
-                                            </Badge>
-                                        ))}
+                        <ResizablePanelGroup direction="vertical" className="w-full h-full">
+                            {/* Top Panel - Search Area */}
+                            <ResizablePanel defaultSize={75}>
+                                <div className="p-4 space-y-4">
+                                    {/* Search Area */}
+                                    <TooltipWrapper text="🔑 Keyword Search" content="Type a word/letter/phrase" />
+                                    <Input
+                                        type="text"
+                                        placeholder="🔎..."
+                                        value={keyword}
+                                        onChange={(e) => setKeyword(e.target.value)}
+                                        className="flex-grow text-md"
+                                        autoFocus
+                                    />
+                                    {/* Additional Filters */}
+                                    <div className="flex flex-row gap-2">
+                                        <Popover>
+                                            <PopoverTrigger asChild>
+                                                <Button
+                                                    variant="outline"
+                                                    className="w-[240px] justify-start text-left font-normal"
+                                                >
+                                                    <CalendarIcon className="mr-2 h-4 w-4" />
+                                                    {startDate ? format(startDate, 'PPP') : <span>Start Date</span>}
+                                                </Button>
+                                            </PopoverTrigger>
+                                            <PopoverContent className="w-auto p-0" align="start">
+                                                <Calendar
+                                                    mode="single"
+                                                    selected={startDate}
+                                                    onSelect={setStartDate}
+                                                    initialFocus
+                                                />
+                                            </PopoverContent>
+                                        </Popover>
+                                        <Popover>
+                                            <PopoverTrigger asChild>
+                                                <Button
+                                                    variant="outline"
+                                                    className="w-[240px] justify-start text-left font-normal"
+                                                >
+                                                    <CalendarIcon className="mr-2 h-4 w-4" />
+                                                    {endDate ? format(endDate, 'PPP') : <span>End Date</span>}
+                                                </Button>
+                                            </PopoverTrigger>
+                                            <PopoverContent className="w-auto p-0" align="start">
+                                                <Calendar
+                                                    mode="single"
+                                                    selected={endDate}
+                                                    onSelect={setEndDate}
+                                                    initialFocus
+                                                />
+                                            </PopoverContent>
+                                        </Popover>
                                     </div>
-                                </>
-                            )}
-                        </div>
-                        <div className="flex flex-row gap-2 p-5">
-                            <Button variant="default" onClick={handleSearch} className="w-full hover:bg-purple-500">
-                                <SearchCheck className="w-4 h-4 mr-2" /> Search
-                            </Button>
-                            <Button variant="destructive" onClick={handleClear} className="w-full hover:bg-red-700">
-                                <Trash2 className="w-4 h-4 mr-2" /> Clear
-                            </Button>
-                        </div>
-                        <Command className="rounded-lg border shadow-md">
-                            <CommandList>
-                                {searchResults.length == 0 ? (
-                                    <CommandEmpty>No results found.</CommandEmpty>
-                                ) : (
-                                    <>
-                                        {searchResults.filter((item) => item.type === 'jobProjects').length > 0 && (
+                                    {/* Skills */}
+                                    {skills && (
+                                        <>
+                                            <TooltipWrapper text="🧠 Skills" content="Select skills to filter by" />
+                                            <div className="flex flex-wrap gap-2 max-h-64 overflow-y-auto">
+                                                {skills.map((skill) => (
+                                                    <Badge
+                                                        key={skill}
+                                                        variant={selectedSkills.includes(skill) ? 'default' : 'outline'}
+                                                        className="cursor-pointer"
+                                                        onClick={() => handleSkillToggle(skill)}
+                                                    >
+                                                        {skill}
+                                                    </Badge>
+                                                ))}
+                                            </div>
+                                        </>
+                                    )}
+                                    <div className="flex flex-row gap-2 p-5">
+                                        <Button
+                                            variant="default"
+                                            onClick={handleSearch}
+                                            className="w-full hover:bg-purple-500"
+                                        >
+                                            <SearchCheck className="w-4 h-4 mr-2" /> Search
+                                        </Button>
+                                        <Button
+                                            variant="destructive"
+                                            onClick={handleClear}
+                                            className="w-full hover:bg-red-700"
+                                        >
+                                            <Trash2 className="w-4 h-4 mr-2" /> Clear
+                                        </Button>
+                                    </div>
+                                </div>
+                            </ResizablePanel>
+                            <ResizableHandle withHandle />
+                            {/* Bottom Panel - Search Results */}
+                            <ResizablePanel defaultSize={25} className="flex flex-col h-full">
+                                <div className="h-full flex flex-col flex-grow">
+                                    <div className="flex-grow overflow-auto p-4 bg-white dark:bg-gray-800 rounded-lg border shadow-md">
+                                        {searchResults.length === 0 ? (
+                                            <div className="text-center text-muted-foreground">No results found.</div>
+                                        ) : (
                                             <>
-                                                <CommandGroup heading="💎 Experience/Projects">
-                                                    {searchResults
-                                                        .filter((item) => item.type === 'jobProjects')
-                                                        .map((item) => (
-                                                            <CommandItemWrapper item={item} />
-                                                        ))}
-                                                </CommandGroup>
-                                                <CommandSeparator />
+                                                {searchResults.filter((item) => item.type === 'jobProjects').length > 0 && (
+                                                    <>
+                                                        <div className="mb-2 font-semibold text-lg">💎 Experience/Projects</div>
+                                                        <div className="space-y-2">
+                                                            {searchResults
+                                                                .filter((item) => item.type === 'jobProjects')
+                                                                .map((item) => (
+                                                                    <div key={item.id} className="p-2 bg-gray-100 rounded-md dark:bg-gray-700">
+                                                                        <QueryResultRows item={item} />
+                                                                    </div>
+                                                                ))}
+                                                        </div>
+                                                        <hr className="my-4 border-t border-gray-300 dark:border-gray-600" />
+                                                    </>
+                                                )}
+
+                                                {searchResults.filter((item) => item.type === 'education').length > 0 && (
+                                                    <>
+                                                        <div className="mb-2 font-semibold text-lg">🎓 Education</div>
+                                                        <div className="space-y-2">
+                                                            {searchResults
+                                                                .filter((item) => item.type === 'education')
+                                                                .map((item) => (
+                                                                    <div key={item.id} className="p-2 bg-gray-100 rounded-md dark:bg-gray-700">
+                                                                        <QueryResultRows item={item} />
+                                                                    </div>
+                                                                ))}
+                                                        </div>
+                                                        <hr className="my-4 border-t border-gray-300 dark:border-gray-600" />
+                                                    </>
+                                                )}
+
+                                                {searchResults.filter((item) => item.type === 'achievements').length > 0 && (
+                                                    <>
+                                                        <div className="mb-2 font-semibold text-lg">🎉 Achievements</div>
+                                                        <div className="space-y-2">
+                                                            {searchResults
+                                                                .filter((item) => item.type === 'achievements')
+                                                                .map((item) => (
+                                                                    <div key={item.id} className="p-2 bg-gray-100 rounded-md dark:bg-gray-700">
+                                                                        <QueryResultRows item={item} />
+                                                                    </div>
+                                                                ))}
+                                                        </div>
+                                                        <hr className="my-4 border-t border-gray-300 dark:border-gray-600" />
+                                                    </>
+                                                )}
                                             </>
                                         )}
-                                        {searchResults.filter((item) => item.type === 'education').length > 0 && (
-                                            <>
-                                                <CommandGroup heading="🎓 Education">
-                                                    {searchResults
-                                                        .filter((item) => item.type === 'education')
-                                                        .map((item) => (
-                                                            <CommandItemWrapper item={item} />
-                                                        ))}
-                                                </CommandGroup>
-                                                <CommandSeparator />
-                                            </>
-                                        )}
-                                        {searchResults.filter((item) => item.type === 'achievements').length > 0 && (
-                                            <>
-                                                <CommandGroup heading="🎉 Achievements">
-                                                    {searchResults
-                                                        .filter((item) => item.type === 'achievements')
-                                                        .map((item) => (
-                                                            <CommandItemWrapper item={item} />
-                                                        ))}
-                                                </CommandGroup>
-                                                <CommandSeparator />
-                                            </>
-                                        )}
-                                    </>
-                                )}
-                            </CommandList>
-                        </Command>
+                                    </div>
+                                </div>
+                            </ResizablePanel>
+                        </ResizablePanelGroup>
                     </motion.div>
                 </motion.div>
             )}
@@ -250,12 +286,12 @@ function TooltipWrapper({ text, content }: { text: string; content: string }) {
     );
 }
 
-function CommandItemWrapper({ item }: { item: SearchResultRecord }) {
+function QueryResultRows({ item }: { item: SearchResultRecord }) {
     return (
-        <CommandItem key={item.id} className="p-2">
+        <div key={item.id} className="p-2">
             <Popover>
                 <PopoverTrigger asChild>
-                    <Button variant="ghost" className="w-full text-left flex items-start">
+                    <Button variant="ghost" className="w-full text-left flex items-start items-center justify-center">
                         <div className="flex flex-col flex-grow truncate">
                             <span className="font-semibold truncate">{item.header}</span>
                             <span className="text-sm truncate text-muted-foreground">{item.body}</span>
@@ -264,6 +300,6 @@ function CommandItemWrapper({ item }: { item: SearchResultRecord }) {
                 </PopoverTrigger>
                 <PopoverContent align="start">Place content for the popover here.</PopoverContent>
             </Popover>
-        </CommandItem>
+        </div>
     );
 }
