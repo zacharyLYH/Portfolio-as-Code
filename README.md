@@ -1,66 +1,65 @@
 # Portfolio-as-Code
 
-Config file:
-- Name (M)
-- Born year
-- Pronouns
-- Image (M)
-- Short bio (M)
-- Long bio
-- Title / Student (M)
-- Location. Uni location / company name (M)
-- Resume viewable link
-- Socials (X, LinkedIn, Ig, Fb, Others (generic image))
+Portfolio generator configured using json. Geared for portfolios that have a lot of text and want interactive filtering abilities such as partial word search. 
 
-Job&Project 
-- Ordering (M)
-- isJob / isProject (M)
-- Title (M) (B)
-- Start - End/Current (B)
-- Description
-- Links
-- Skills involved
+# Features
+- UI for config generation 
+- Full responsiveness from mobile to desktop
+- Maximum SSR for a good UX
+- Advanced filter support for users to query your portfolio
+- Modern, text dominant friendly, sleek looking UI
+
+# To use
+1. Navigate to [configure page]("https://zacharyLYH.bio/configure")
+2. Fill in relevant details. Correct errors as prompted.
+3. Click `Download Json` button.
+4. Name of file **MUST** be called `portfolio_data.json`. The default name should already be correct. If there are multiple of these config files, your OS might prepend numbers to deduplicate. You must remove the numbers and call the file exactly as `portfolio_data.json`.
+5. Move `portfolio_data.json` into the **root** directory of this project. 
+6. Host it! For the most foolproof experience, we suggest [Vercel](https://medium.com/@hikmohadetunji/hosting-your-first-website-on-vercel-a-step-by-step-guide-95061f1ca687).
+
+
+# Json config (For contributers)
+> It is **highly** adviced to use the [configure page]("https://zacharyLYH.bio/configure") page to configure your json config. Manual editing is error prone and there are no extra benefits of manual editing.
+
+> We'll mark required fields as (R). These fields must be included in order to pass the sanitization check.
+
+Job/Project
+- title (R)
+- startDate (R)
+- endDate (R) if isCurrent=false
+- isCurrent (R) if endDate=null
+- description (R)
+- links
+- skills
 
 Education
-- Ordering (M)
-- Institution name (M) (B)
-- Course name  (B)
-- Awarded
-- Start - End/Current (B)
-- Description
-- Links
+- institutionName (R)
+- courseName (R)
+- startDate (R)
+- endDate (R) if isCurrent=false
+- isCurrent (R) if endDate=null
+- description 
+- links
 
-Achievements
-- Ordering (M)
-- Name (M) (B)
-- Description
-- Date awarded (B)
-- Links
-- Skills
-
-(M) must include in config file
-(B) birds eye view, ie, don't need to click inside to view.
-
-All sections except header information show only birds eye view (B). 
-
-Individual cards on a horizontal slider. When user clicks anywhere in the card it opens a modal with all the info
-
-Skills are comma seperated
-
-Under Job&Project and Achievements, skills are listed as count. Can hover to view more
-
-Filter
-- Skill filter
-- "Contains" filter using an edit box. Lowercase the query and the search terms
-- As user types, the skill that gets filtered shows up in a navigation menu. A button to the right opens a dialog with the skill
-- Year filter
-- Pulls up all the things the person was doing in that year / year range
-
-/my-portfolio
-- Create a portfolio json file
-- After user creates, prompt them to clone this repo, replace the json config file, and push to gh with vercel
-- Update the json file by uploading a file 
+Achievement 
+- name (R)
+- description 
+- dateAwarded (R)
+- links
+- skills
 
 
-Pattern:
-Top level component reads the config file and does SSR. Try to push CSR as low as possible
+PortfolioData 
+- name (R)
+- bornYear 
+- pronouns 
+- image (R)
+- shortBio (R)
+- longBio 
+- title (R)
+- location (R)
+- resumeLink 
+
+
+
+
