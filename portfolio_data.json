@@ -139,7 +139,7 @@
       "startDate": "2024-10-22T16:00:00.000Z",
       "endDate": "2024-11-02T16:00:00.000Z",
       "isCurrent": false,
-      "description": "• Created a json configuration based portfolio generator that generates a fully responsive portfolio. \n• Written with SSR in mind for maximum page load time performance",
+      "description": "• Created a json configuration based portfolio generator that generates a fully responsive portfolio. \n• Written with SSR in mind for maximum page load time performance \n• Achieved 100% SEO performance and average 95% page performance according to Google Lighthouse",
       "links": [
         "https://zacharyLYH.bio/configure"
       ],
@@ -147,7 +147,9 @@
         "nextjs",
         "tailwindcss",
         "shadcn-ui",
-        "typescript"
+        "typescript",
+        "seo",
+        "googlelighthouse"
       ],
       "isCollapsed": true
     },
