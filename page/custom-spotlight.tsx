@@ -261,11 +261,18 @@ function TooltipWrapper({ text, content }: { text: string; content: string }) {
 
 function CommandItemWrapper({ item }: { item: SearchResultRecord }) {
     return (
-        <CommandItem key={item.id}>
-            <div className="grid grid-cols-2 w-full">
-                <span className="font-semibold truncate">{item.header}</span>
-                <span className="text-sm truncate">{item.body}</span>
-            </div>
+        <CommandItem key={item.id} className="p-2">
+            <Popover>
+                <PopoverTrigger asChild>
+                    <Button variant="ghost" className="w-full text-left flex items-start">
+                        <div className="flex flex-col flex-grow truncate">
+                            <span className="font-semibold truncate">{item.header}</span>
+                            <span className="text-sm truncate text-muted-foreground">{item.body}</span>
+                        </div>
+                    </Button>
+                </PopoverTrigger>
+                <PopoverContent align="start">Place content for the popover here.</PopoverContent>
+            </Popover>
         </CommandItem>
     );
 }
