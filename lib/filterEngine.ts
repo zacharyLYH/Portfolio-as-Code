@@ -18,7 +18,7 @@ function containsKeywords(criteria: FilterCriteria, item: { title: string; descr
     const title = item.title.toLowerCase();
     const description = item.description.toLowerCase();
     const keywordParts = keywordLower.split(' ').filter(Boolean);
-    return keywordParts.some(part => title.includes(part) || description.includes(part));
+    return keywordParts.some((part) => title.includes(part) || description.includes(part));
 }
 
 function containsSkills(criteria: FilterCriteria, itemSkills: string[]) {
