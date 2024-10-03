@@ -811,7 +811,7 @@ export default function PortfolioPage() {
                             <li className="text-lg">
                                 <span className="font-medium">
                                     (Optional) In an environment variable, provide a page title to populate the browser
-                                    tab's title. The variable must be called{' '}
+                                    tab&apos;s title. The variable must be called
                                 </span>
                                 <code className="px-2 py-1 bg-muted rounded-md text-sm">NEXT_PUBLIC_WEBPAGE_TITLE</code>
                                 .
