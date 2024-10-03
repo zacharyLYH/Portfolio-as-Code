@@ -19,30 +19,32 @@ const socialIcons = {
 
 export default function PortfolioHero({ data }: PortfolioHeroInterface) {
     return (
-        <div className="md:grid grid-cols-2">
-            <div className="flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-8">
-                {/* Small screen image (always on top) */}
+        <div className="p-4 sm:container sm:mx-auto md:grid md:grid-cols-2">
+            <div className="flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0">
+                {/* Small screen image (fixed size, always on top) */}
                 <div className="flex-shrink-0 mb-4 md:hidden">
                     <Image
                         src={data.image}
                         alt={data.name}
-                        width={100} 
+                        width={100} // Fixed size for the image
                         height={100}
                         className="rounded-full object-cover"
                     />
                 </div>
 
-                {/* Text section */}
-                <div className="flex flex-col space-y-4">
-                    <div className="space-y-2">
+                {/* Header text section - full width on small screens */}
+                <div className="flex flex-col space-y-4 w-full">
+                    <div className="space-y-2 w-full">
                         <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-7xl">{data.name}</h1>
-                        <p className="text-lg sm:text-xl text-muted-foreground">💼 {data.title}</p>
-                        <div className="flex items-center space-x-2 text-muted-foreground">📍 {data.location}</div>
-                        <p className="text-sm sm:text-base text-muted-foreground">{data.pronouns}</p>
+                        <p className="text-lg sm:text-xl text-muted-foreground w-full">💼 {data.title}</p>
+                        <div className="flex items-center space-x-2 text-muted-foreground w-full">
+                            📍 {data.location}
+                        </div>
+                        <p className="text-sm sm:text-base text-muted-foreground w-full">{data.pronouns}</p>
                     </div>
 
                     {/* Short Bio */}
-                    <div className="space-y-2">
+                    <div className="space-y-2 w-full">
                         <h2 className="text-xl sm:text-2xl font-semibold">Short Bio 📚</h2>
                         <p className="text-muted-foreground text-sm sm:text-base md:text-xl overflow-hidden text-ellipsis break-words">
                             {data.shortBio}
@@ -101,7 +103,7 @@ export default function PortfolioHero({ data }: PortfolioHeroInterface) {
                 </div>
             </div>
 
-            {/* Large screen image (beside text) */}
+            {/* Large screen image next to text */}
             <div className="hidden md:flex items-center justify-center lg:justify-end">
                 <Image
                     src={data.image}
