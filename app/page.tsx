@@ -33,7 +33,7 @@ export default function Home() {
         <>
             {portfolioData ? (
                 // a moving wallpaper behind the container would be nice
-                <div className="container items-center mx-auto my-4 md:my-8">
+                <div className="container items-center p-4 md:mx-auto my-4 md:my-8">
                     <PortfolioPage data={portfolioData} /> {/* ssr */}
                     <Experience experiences={portfolioData.jobsProjects.filter((job) => job.isJob)} /> {/* ssr */}
                     <Projects projects={portfolioData.jobsProjects.filter((job) => !job.isJob)} />
