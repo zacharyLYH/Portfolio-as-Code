@@ -4,7 +4,8 @@ Portfolio generator configured using json. Geared for portfolios that have a lot
 
 # Features
 - UI for config generation 
-- Full responsiveness from mobile to desktop
+- Full responsiveness from mobile to desktop. 90% Performance on mobile, 100% Performance on desktop according to Google Lighthouse
+- 100% SEO score on Google Lighthouse
 - Maximum SSR for a good UX
 - Advanced filter support for users to query your portfolio
 - Modern, text dominant friendly, sleek looking UI
