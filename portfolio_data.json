@@ -1,0 +1,354 @@
+{
+  "name": "Zachary Lee",
+  "bornYear": "1999",
+  "pronouns": "He/Him",
+  "image": "https://media.licdn.com/dms/image/v2/C4E03AQGJ9y55T6SnfQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1649965435174?e=1733356800&v=beta&t=gCOBv2PsePKlfwtNI8g1VdUUMOxlIRzUTqNQu_3qjBY",
+  "shortBio": "Ex SWE @ Accenture, @ Spawnn",
+  "longBio": "Zachary is a passionate Full Stack Software Engineer with a keen interest enterprise scale applications.\n\nZachary started coding in college while doing his Computer Science degree, and developed a strong interest in it. He began explore various topics in software engineering and found an affinity for cloud based commercial projects. Zachary pursued this subfield at his own time and developed skills and knowledge in cloud native development and web development. On the side, he is still very active in learning advanced computer science topics and other software engineering topics, which helped him round out his expertise in the tech field. Today, Zachary is still as passionate in computer science and software engineering as during his college days and loves having discussions about tech.\n\nZachary's interests span beyond tech. In his free time, Zachary is a learner in golf. He also has a habit of reading books of many genres, fiction and non-fiction.",
+  "title": "Software Engineer",
+  "location": "Grab",
+  "resumeLink": "https://www.overleaf.com/read/ncszhnqvvcsx#47bbc5",
+  "socials": [
+    {
+      "platform": "linkedin",
+      "url": "https://www.linkedin.com/in/leeyihong03/"
+    },
+    {
+      "platform": "email",
+      "url": "leeyihong03@gmail.com"
+    },
+    {
+      "platform": "github",
+      "url": "https://github.com/zacharyLYH"
+    }
+  ],
+  "jobsProjects": [
+    {
+      "id": "1727937708108",
+      "isJob": true,
+      "title": "Software Engineer @ Grab",
+      "startDate": "2025-02-17T16:00:00.000Z",
+      "endDate": null,
+      "isCurrent": true,
+      "description": "• Working in golang on a content moderation software",
+      "links": [],
+      "skills": [
+        "golang"
+      ],
+      "isCollapsed": true
+    },
+    {
+      "id": "1727937790262",
+      "isJob": true,
+      "title": "Software Engineer @ Accenture",
+      "startDate": "2023-09-04T16:00:00.000Z",
+      "endDate": "2024-12-15T16:00:00.000Z",
+      "isCurrent": false,
+      "description": "• Developed and maintained a Docker based microservice project, spanning 48 services, across 9 environments for multiple project\nclients.\n• Achieved top ticket resolver in 5 consecutive sprints, averaging 25 tickets per sprint, reducing backlogged project activities.\n• Orchestrated collaborative efforts between QA and other engineering teams to analyze business requirements and identify\napplication issues; streamlined processes leading to a 25% reduction in bug resolution time.\n• Optimized performance by 15% through query optimization, efficient database connections, and reduced memory usage.\n• Collaborated on data migration for 3 clients, working cross functionally with other teams.",
+      "links": [],
+      "skills": [
+        "nodejs",
+        "microservices",
+        "javascript",
+        "sql",
+        "mssql",
+        "agile",
+        "git"
+      ],
+      "isCollapsed": true
+    },
+    {
+      "id": "1727937903378",
+      "isJob": true,
+      "title": "Full Stack Software Engineer Intern @ Spawnn",
+      "startDate": "2022-11-30T16:00:00.000Z",
+      "endDate": "2023-08-31T16:00:00.000Z",
+      "isCurrent": false,
+      "description": "• Collaborated closely with the CEO to establish more than 80% (18+ components) of the Backend architecture, concentrating on scalability and maintainability. \n• Led development of an automated test tool, using JS testing frameworks and Python scripting, cutting testing time by 50%.\n• Supervised integration of 20 approved API endpoints with Frontend team and troubleshooted blockers by developers. \n• Coded more than 50% Backend code and facilitated 50+ code reviews. Transitioned to Full Stack in 2 weeks and coded 10+ Frontend features using Next.JS and Typescript.\n• Played a key role in spearheading company to Alpha release stages in 4 months; highly recognized for impact and effort.",
+      "links": [],
+      "skills": [
+        "elasticsearch",
+        "mongodb",
+        "nodejs",
+        "expressjs",
+        "git",
+        "nextjs"
+      ],
+      "isCollapsed": true
+    },
+    {
+      "id": "1727938013501",
+      "isJob": true,
+      "title": " Open-Source club Contributor @ Make-Open-Source",
+      "startDate": "2022-09-30T16:00:00.000Z",
+      "endDate": "2023-07-29T16:00:00.000Z",
+      "isCurrent": false,
+      "description": "• Coordinated 5 new features and addressed issues at UB’s open-source club’s Python Classic-RPG style game engine. \n• Introduced 3 new core features such as Potions and Money, and classes such as Health and Speed.",
+      "links": [],
+      "skills": [],
+      "isCollapsed": true
+    },
+    {
+      "id": "1727938059709",
+      "isJob": true,
+      "title": " Teaching Assistant for Algorithms and Complexity",
+      "startDate": "2022-08-31T16:00:00.000Z",
+      "endDate": "2023-06-29T16:00:00.000Z",
+      "isCurrent": false,
+      "description": "1) Conducted office hours and graded for a Junior level Algorithms and Complexity analysis course. UB’s CSE331.\n2) Assisted students in understanding abstract algorithmic concepts through technical communication and worked examples.\n3 )Further honed technical communication skills through explaining difficult concepts.",
+      "links": [],
+      "skills": [],
+      "isCollapsed": true
+    },
+    {
+      "id": "1727938310049",
+      "isJob": false,
+      "title": "Build Your Own X",
+      "startDate": "2024-04-30T16:00:00.000Z",
+      "endDate": null,
+      "isCurrent": true,
+      "description": "Implemented popular dev tools such as Docker, Git, Http and DNS servers to specification, passing 100% test cases on\ncodecrafters.io.",
+      "links": [],
+      "skills": [
+        "golang"
+      ],
+      "isCollapsed": true
+    },
+    {
+      "id": "1727938355014",
+      "isJob": true,
+      "title": "OpenABAC",
+      "startDate": "2023-12-31T16:00:00.000Z",
+      "endDate": "2024-04-30T16:00:00.000Z",
+      "isCurrent": false,
+      "description": "Engineered an ABAC system from scratch, following closely with ABAC specification.",
+      "links": [],
+      "skills": [
+        "nextjs",
+        "mysql",
+        "dockerm tailwindcss",
+        "shadcn-ui",
+        "typescript"
+      ],
+      "isCollapsed": true
+    },
+    {
+      "id": "1727938397815",
+      "isJob": false,
+      "title": "portfolio-as-code",
+      "startDate": "2024-10-22T16:00:00.000Z",
+      "endDate": "2024-11-02T16:00:00.000Z",
+      "isCurrent": false,
+      "description": "• Created a json configuration based portfolio generator that generates a fully responsive portfolio. \n• Written with SSR in mind for maximum page load time performance",
+      "links": [
+        "https://zacharyLYH.bio/configure"
+      ],
+      "skills": [
+        "nextjs",
+        "tailwindcss",
+        "shadcn-ui",
+        "typescript"
+      ],
+      "isCollapsed": true
+    },
+    {
+      "id": "1727939618375",
+      "isJob": false,
+      "title": "Tailspin",
+      "startDate": "2023-08-31T16:00:00.000Z",
+      "endDate": "2024-01-12T16:00:00.000Z",
+      "isCurrent": false,
+      "description": " • Developed an AI powered competitive TailwindCSS UI development platform, with features such as an intuitive coding\nwhiteboard and AI powered scorer.\n• Obtained a 4.8/5 rating among users across 10000+ website views and 4000+ submissions.",
+      "links": [],
+      "skills": [
+        "openai",
+        "nextjs",
+        "xata",
+        "shadcn-ui",
+        "tailwindcss",
+        "typescript"
+      ],
+      "isCollapsed": true
+    },
+    {
+      "id": "1727939727379",
+      "isJob": false,
+      "title": "Cred",
+      "startDate": "2023-05-31T16:00:00.000Z",
+      "endDate": "2023-09-15T16:00:00.000Z",
+      "isCurrent": false,
+      "description": "• Engineered a user friendly and secure secrets manager, designed to reduce pain points of sharing secrets in software engineering,\nincreasing team efficiency in sharing environment variables by 40%.\n• Achieved an average 93% score on Google Lighthouse on performance, accessibility, and SEO.\n• Onboarded 50+ users and managed 1000+ individual secrets",
+      "links": [],
+      "skills": [
+        "nextjs",
+        "shadcn-ui",
+        "tailwindcss",
+        "mysql",
+        "typescript"
+      ],
+      "isCollapsed": true
+    },
+    {
+      "id": "1727939806505",
+      "isJob": false,
+      "title": "Next Portfolio Template",
+      "startDate": "2023-02-28T16:00:00.000Z",
+      "endDate": "2023-07-06T16:00:00.000Z",
+      "isCurrent": false,
+      "description": "• A minimalistic portfolio template built using the NextJS framework on Typescript React, Tailwind CSS, and DaisyUI component library.\n• Designed to scale to unlimited number of projects and experiences.\n• Has several active users.",
+      "links": [
+        "https://github.com/zacharyLYH/Next-Portfolio-Template"
+      ],
+      "skills": [
+        "tailwindcss",
+        "typescript",
+        "nextjs",
+        "daisyui"
+      ],
+      "isCollapsed": true
+    },
+    {
+      "id": "1727939980851",
+      "isJob": false,
+      "title": "Web Hosted Password Manager",
+      "startDate": "2022-12-31T16:00:00.000Z",
+      "endDate": "2023-04-08T16:00:00.000Z",
+      "isCurrent": false,
+      "description": "• Designed and implementing a full stack web hosted password manager, focusing on security and ease of maintenance.\n• Leveraged industry standard protocols such as AES and RSA to safely communicate traffic and Docker to deploy frontend.\n• Motivation behind project is due to lack of free web hosted password managers, thus implementing it as an open-source\nproject. Wrote out an elaborate TDD for ease of other developers to get involved.",
+      "links": [],
+      "skills": [
+        "git",
+        "go"
+      ],
+      "isCollapsed": true
+    },
+    {
+      "id": "1727940058122",
+      "isJob": false,
+      "title": "Pintos OS",
+      "startDate": "2022-08-31T16:00:00.000Z",
+      "endDate": "2023-01-30T16:00:00.000Z",
+      "isCurrent": false,
+      "description": "• Organized a team of 3 to build the Pintos Operating System, achieving full scores on 120+ (all) test cases\n• Facilitated frequent sync-sessions, code reviews, and pair programming sessions",
+      "links": [],
+      "skills": [
+        "operatingsystems",
+        "c",
+        "linux"
+      ],
+      "isCollapsed": true
+    },
+    {
+      "id": "1727940144710",
+      "isJob": false,
+      "title": "Design Patterns in TypeScript",
+      "startDate": "2024-06-02T16:00:00.000Z",
+      "endDate": "2023-07-20T16:00:00.000Z",
+      "isCurrent": false,
+      "description": "•  A learning haven for Object Oriented Design Patterns in Typescript\n•  Follows the book Head First Design Patterns with code examples from the code demonstrated in Typescript\n•  Contains at least 1 fresh idea for every design pattern covered in the book\n• Including an auctioning system for the Observer Pattern and an implementation of a Text Editor Settings tab using the Strategy Pattern",
+      "links": [],
+      "skills": [
+        "typescript",
+        "designpatterns"
+      ],
+      "isCollapsed": true
+    },
+    {
+      "id": "1727940228654",
+      "isJob": false,
+      "title": "E-Commerce CMS",
+      "startDate": "2023-04-30T16:00:00.000Z",
+      "endDate": "2023-12-14T16:00:00.000Z",
+      "isCurrent": false,
+      "description": "• E-Commerce Admin side CMS includes features like Products and it's various features, and switching stores\n•  E-Commerce Admin uses Clerk Auth service as authentication service, and Shadcn\n• UI as a component library\n• Client side CMS includes rich UI for viewing, ordering, and purchasing products\n• Stripe API integration as a payment system, Prisma as ORM, and PlanetScale as DB",
+      "links": [],
+      "skills": [
+        "shadcn-ui",
+        "clerkauth",
+        "prismaorm",
+        "typescript",
+        "nextjs"
+      ],
+      "isCollapsed": true
+    },
+    {
+      "id": "1727940341841",
+      "isJob": false,
+      "title": "Wine price indicator",
+      "startDate": "2023-02-23T16:00:00.000Z",
+      "endDate": "2023-06-29T16:00:00.000Z",
+      "isCurrent": false,
+      "description": "• Utilized proper data cleaning and EDA steps\n• Implementing statistical and ML models, such as regression, clustering, and classifying algorithms",
+      "links": [],
+      "skills": [
+        "datascience",
+        "python",
+        "statistics"
+      ],
+      "isCollapsed": true
+    },
+    {
+      "id": "1727940406203",
+      "isJob": false,
+      "title": "Obsidian notes clone",
+      "startDate": "2023-02-16T16:00:00.000Z",
+      "endDate": "2023-06-29T16:00:00.000Z",
+      "isCurrent": false,
+      "description": "• A group based coursework project to build the Obsidian clone in a final year Software Engineering course\n• Practicing core software engineering best practices, such as version control",
+      "links": [],
+      "skills": [
+        "electronjs",
+        "typescript",
+        "reactjs"
+      ],
+      "isCollapsed": true
+    }
+  ],
+  "education": [
+    {
+      "id": "1727938088138",
+      "institutionName": "University at Buffalo",
+      "courseName": "BS Computer Science",
+      "awarded": "",
+      "startDate": "2020-08-31T16:00:00.000Z",
+      "endDate": "2020-08-31T16:00:00.000Z",
+      "isCurrent": false,
+      "description": "3.7/4.0 GPA",
+      "links": [],
+      "isCollapsed": true
+    }
+  ],
+  "achievements": [
+    {
+      "id": "1727938147709",
+      "name": "AWS Certified Developer Associate (AWS DVA-C02)",
+      "description": "",
+      "dateAwarded": "2024-11-26T16:00:00.000Z",
+      "links": [
+        "https://www.credly.com/badges/de00d7db-eed2-4cfa-9f0e-449a3c37cf29/linked_in?t=sha236"
+      ],
+      "skills": [
+        "aws"
+      ],
+      "isCollapsed": true
+    },
+    {
+      "id": "1727938259234",
+      "name": "Judge, Google Workspace Hackathon 2024",
+      "description": "Adjudicated projects in a major hackathon with 1,000+ participants and 300+ teams, assessing technical excellence and innovation",
+      "dateAwarded": "2024-08-31T16:00:00.000Z",
+      "links": [],
+      "skills": [],
+      "isCollapsed": true
+    },
+    {
+      "id": "1727938289966",
+      "name": "Founder, Tech Interviews MY community",
+      "description": "",
+      "dateAwarded": "2024-08-31T16:00:00.000Z",
+      "links": [],
+      "skills": [],
+      "isCollapsed": true
+    }
+  ]
+}
