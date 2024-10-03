@@ -7,10 +7,13 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import { CalendarIcon, SearchCheck, Trash2, X } from 'lucide-react';
+import { CalendarIcon, SearchCheck, Trash2, X, GraduationCapIcon, TrophyIcon, Link, Hammer } from 'lucide-react';
 import { format } from 'date-fns';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/resizable';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { formatDate } from '@/lib/utils';
 
 interface CustomSpotlightProps {
     isOpen: boolean;
@@ -19,6 +22,7 @@ interface CustomSpotlightProps {
     skills: string[];
     searchResults: SearchResultRecord[];
     setSearchResults: Dispatch<SetStateAction<SearchResultRecord[]>>;
+    queryById: (id: string) => Achievement | Education | JobProject | undefined;
 }
 
 export default function CustomSpotlight({
@@ -28,6 +32,7 @@ export default function CustomSpotlight({
     skills,
     searchResults,
     setSearchResults,
+    queryById,
 }: CustomSpotlightProps) {
     const [keyword, setKeyword] = useState('');
     const [startDate, setStartDate] = useState<Date>();
@@ -213,15 +218,24 @@ export default function CustomSpotlight({
                                             <div className="text-center text-muted-foreground">No results found.</div>
                                         ) : (
                                             <>
-                                                {searchResults.filter((item) => item.type === 'jobProjects').length > 0 && (
+                                                {searchResults.filter((item) => item.type === 'jobProjects').length >
+                                                    0 && (
                                                     <>
-                                                        <div className="mb-2 font-semibold text-lg">💎 Experience/Projects</div>
+                                                        <div className="mb-2 font-semibold text-lg">
+                                                            💎 Experience/Projects
+                                                        </div>
                                                         <div className="space-y-2">
                                                             {searchResults
                                                                 .filter((item) => item.type === 'jobProjects')
                                                                 .map((item) => (
-                                                                    <div key={item.id} className="p-2 bg-gray-100 rounded-md dark:bg-gray-700">
-                                                                        <QueryResultRows item={item} />
+                                                                    <div
+                                                                        key={item.id}
+                                                                        className="p-2 bg-gray-100 rounded-md dark:bg-gray-700"
+                                                                    >
+                                                                        <QueryResultRows
+                                                                            item={item}
+                                                                            queryById={queryById}
+                                                                        />
                                                                     </div>
                                                                 ))}
                                                         </div>
@@ -229,15 +243,22 @@ export default function CustomSpotlight({
                                                     </>
                                                 )}
 
-                                                {searchResults.filter((item) => item.type === 'education').length > 0 && (
+                                                {searchResults.filter((item) => item.type === 'education').length >
+                                                    0 && (
                                                     <>
                                                         <div className="mb-2 font-semibold text-lg">🎓 Education</div>
                                                         <div className="space-y-2">
                                                             {searchResults
                                                                 .filter((item) => item.type === 'education')
                                                                 .map((item) => (
-                                                                    <div key={item.id} className="p-2 bg-gray-100 rounded-md dark:bg-gray-700">
-                                                                        <QueryResultRows item={item} />
+                                                                    <div
+                                                                        key={item.id}
+                                                                        className="p-2 bg-gray-100 rounded-md dark:bg-gray-700"
+                                                                    >
+                                                                        <QueryResultRows
+                                                                            item={item}
+                                                                            queryById={queryById}
+                                                                        />
                                                                     </div>
                                                                 ))}
                                                         </div>
@@ -245,15 +266,24 @@ export default function CustomSpotlight({
                                                     </>
                                                 )}
 
-                                                {searchResults.filter((item) => item.type === 'achievements').length > 0 && (
+                                                {searchResults.filter((item) => item.type === 'achievements').length >
+                                                    0 && (
                                                     <>
-                                                        <div className="mb-2 font-semibold text-lg">🎉 Achievements</div>
+                                                        <div className="mb-2 font-semibold text-lg">
+                                                            🎉 Achievements
+                                                        </div>
                                                         <div className="space-y-2">
                                                             {searchResults
                                                                 .filter((item) => item.type === 'achievements')
                                                                 .map((item) => (
-                                                                    <div key={item.id} className="p-2 bg-gray-100 rounded-md dark:bg-gray-700">
-                                                                        <QueryResultRows item={item} />
+                                                                    <div
+                                                                        key={item.id}
+                                                                        className="p-2 bg-gray-100 rounded-md dark:bg-gray-700"
+                                                                    >
+                                                                        <QueryResultRows
+                                                                            item={item}
+                                                                            queryById={queryById}
+                                                                        />
                                                                     </div>
                                                                 ))}
                                                         </div>
@@ -286,20 +316,91 @@ function TooltipWrapper({ text, content }: { text: string; content: string }) {
     );
 }
 
-function QueryResultRows({ item }: { item: SearchResultRecord }) {
+function QueryResultRows({
+    item,
+    queryById,
+}: {
+    item: SearchResultRecord;
+    queryById: (id: string) => Achievement | Education | JobProject | undefined;
+}) {
+    const [detailItem, setDetailItem] = useState<Achievement | Education | JobProject | undefined>(undefined);
+
+    const handleOpen = () => {
+        const result = queryById(item.id);
+        setDetailItem(result);
+    };
+
     return (
         <div key={item.id} className="p-2">
             <Popover>
                 <PopoverTrigger asChild>
-                    <Button variant="ghost" className="w-full text-left flex items-start items-center justify-center">
+                    <Button
+                        onClick={handleOpen}
+                        variant="ghost"
+                        className="w-full text-left flex items-start items-center justify-center"
+                    >
                         <div className="flex flex-col flex-grow truncate">
                             <span className="font-semibold truncate">{item.header}</span>
                             <span className="text-sm truncate text-muted-foreground">{item.body}</span>
                         </div>
                     </Button>
                 </PopoverTrigger>
-                <PopoverContent align="start">Place content for the popover here.</PopoverContent>
+                <PopoverContent align="start">{QueryResultIndividualDetail(detailItem)}</PopoverContent>
             </Popover>
         </div>
     );
 }
+
+const QueryResultIndividualDetail = (item: Achievement | Education | JobProject | undefined) => {
+    if (!item) return null;
+
+    let icon, title, subtitle, dates, description;
+    let skillCount = 0;
+
+    if ('title' in item) {
+        icon = <CalendarIcon className="h-4 w-4" />;
+        title = item.title;
+        dates = `${formatDate(item.startDate!)} - ${item.isCurrent ? 'Present' : formatDate(item.endDate!)}`;
+        description = item.description;
+        skillCount = item.skills.length;
+    } else if ('institutionName' in item) {
+        icon = <GraduationCapIcon className="h-4 w-4" />;
+        title = item.institutionName;
+        subtitle = item.courseName;
+        dates = `${formatDate(item.startDate!)} - ${item.isCurrent ? 'Present' : formatDate(item.endDate!)}`;
+    } else if ('name' in item) {
+        icon = <TrophyIcon className="h-4 w-4" />;
+        title = item.name;
+        dates = `Awarded: ${formatDate(item.dateAwarded!)}`;
+        description = item.description;
+        skillCount = item.skills.length;
+    }
+
+    return (
+        <Card className="w-full max-w-sm">
+            <CardHeader className="space-y-1 p-4">
+                <CardTitle className="flex items-center space-x-2 text-base font-semibold">
+                    {icon}
+                    <span className="truncate">{title}</span>
+                </CardTitle>
+                {subtitle && <p className="text-sm text-muted-foreground">{subtitle}</p>}
+            </CardHeader>
+            <CardContent className="p-4 pt-0">
+                <ScrollArea className="h-[100px] pr-4">
+                    <div className="space-y-2">
+                        <p className="text-xs text-muted-foreground">{dates}</p>
+                        {description && <p className="text-sm">{description}</p>}
+                    </div>
+                </ScrollArea>
+                <div className="flex flex-row space-x-4 mt-2 text-muted-foreground">
+                    <Link className="w-4 h-4 mr-1" /> {item.links.length}
+                    {!('institutionName' in item) && (
+                        <>
+                            <Hammer className="w-4 h-4 mr-1" /> {skillCount}
+                        </>
+                    )}
+                </div>
+            </CardContent>
+        </Card>
+    );
+};

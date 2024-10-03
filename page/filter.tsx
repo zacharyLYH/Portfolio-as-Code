@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import CustomSpotlight from './custom-spotlight';
 import { useState } from 'react';
 import { FilterIcon } from 'lucide-react';
+import { filterPortfolioData } from '@/lib/filterEngine';
 
 interface FilterProps {
     portfolioData: PortfolioData | null;
@@ -18,7 +19,31 @@ export default function Filter({ portfolioData, skills }: FilterProps) {
         const resultIds = filterPortfolioData(portfolioData!, params);
         setResults(resultIds);
         //debug
-        console.log(params);
+        // console.log(params);
+    };
+
+    const queryPfById = (id: string) => {
+        if (portfolioData?.achievements) {
+            for (const data of portfolioData?.achievements) {
+                if (data.id === id) {
+                    return data;
+                }
+            }
+        }
+        if (portfolioData?.education) {
+            for (const data of portfolioData?.education) {
+                if (data.id === id) {
+                    return data;
+                }
+            }
+        }
+        if (portfolioData?.jobsProjects) {
+            for (const data of portfolioData?.jobsProjects) {
+                if (data.id === id) {
+                    return data;
+                }
+            }
+        }
     };
 
     return (
@@ -43,6 +68,7 @@ export default function Filter({ portfolioData, skills }: FilterProps) {
                         skills={skills}
                         searchResults={results}
                         setSearchResults={setResults}
+                        queryById={queryPfById}
                     />
                 </div>
             )}
