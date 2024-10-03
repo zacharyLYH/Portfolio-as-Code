@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef, SetStateAction, Dispatch } from 'react';
+import { useState, useEffect, useRef, SetStateAction, Dispatch, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
@@ -43,6 +43,26 @@ export default function CustomSpotlight({
     const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
     const spotlightRef = useRef<HTMLDivElement>(null);
 
+    const handleSearch = () => {
+        onSearch({ keyword, startDate, endDate, selectedSkills });
+    };
+
+    const handleKeyDown = useCallback(
+        (event: KeyboardEvent) => {
+            if (event.key === 'Enter') {
+                handleSearch();
+            }
+        },
+        [handleSearch]
+    );
+
+    useEffect(() => {
+        window.addEventListener('keydown', handleKeyDown);
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [handleKeyDown]);
+
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             const target = event.target as Node;
@@ -65,10 +85,6 @@ export default function CustomSpotlight({
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, [isOpen, onClose]);
-
-    const handleSearch = () => {
-        onSearch({ keyword, startDate, endDate, selectedSkills });
-    };
 
     const handleClear = () => {
         setStartDate(undefined);
