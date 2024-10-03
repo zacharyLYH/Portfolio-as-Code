@@ -11,7 +11,7 @@ Portfolio generator configured using json. Geared for portfolios that have a lot
 - Modern, text dominant friendly, sleek looking UI
 
 # To use
-1. Navigate to [configure page]("https://zacharyLYH.bio/configure")
+1. Navigate to [configure page](https://zacharyLYH.bio/configure).
 2. Fill in relevant details. Correct errors as prompted.
 3. Click `Download Json` button.
 4. Name of file **MUST** be called `portfolio_data.json`. The default name should already be correct. If there are multiple of these config files, your OS might prepend numbers to deduplicate. You must remove the numbers and call the file exactly as `portfolio_data.json`.
