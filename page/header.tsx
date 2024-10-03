@@ -1,9 +1,9 @@
 import Image from 'next/image';
-import { Linkedin, Mail, MapPin, FileText } from 'lucide-react';
+import { Linkedin, Mail, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { GitHubLogoIcon, TwitterLogoIcon } from '@radix-ui/react-icons';
+import { GitHubLogoIcon, InstagramLogoIcon, TwitterLogoIcon } from '@radix-ui/react-icons';
 
 interface PortfolioHeroInterface {
     data: PortfolioData;
@@ -14,6 +14,7 @@ const socialIcons = {
     twitter: TwitterLogoIcon,
     linkedin: Linkedin,
     email: Mail,
+    instagram: InstagramLogoIcon
 };
 
 export default function PortfolioHero({ data }: PortfolioHeroInterface) {

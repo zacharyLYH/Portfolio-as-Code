@@ -11,7 +11,8 @@ import SimpleErrorDialog from '@/components/ui/simple-error-dialog';
 import { DatePicker } from '@/components/ui/date-picker';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { useToast } from '@/hooks/use-toast';
-import { GitHubLogoIcon } from '@radix-ui/react-icons';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Separator } from "@/components/ui/separator"
 import { parsePortfolioData } from '@/lib/parseJson';
 import Footer from '@/page/footer';
 
@@ -32,10 +33,11 @@ const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({ title, children
     </div>
 );
 
-const allowedSocials = ['twitter', 'github', 'email', 'instagram', 'facebook', 'linkedin'];
+const allowedSocials = ['twitter', 'github', 'email', 'instagram', 'linkedin'];
 
 export default function PortfolioPage() {
     const [error, setError] = useState<string | null>(null);
+    const [downloaded, setDownloaded] = useState(false);
     const [pfData, setPfData] = useState<PortfolioData>({
         name: '',
         bornYear: '',
@@ -323,6 +325,7 @@ export default function PortfolioPage() {
             linkElement.setAttribute('href', dataUri);
             linkElement.setAttribute('download', exportFileDefaultName);
             linkElement.click();
+            setDownloaded(true);
         }
     };
 
