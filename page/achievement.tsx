@@ -18,7 +18,9 @@ export default function Achievement({ achievement }: AchievementPageProps) {
         <div className="my-4 mt-8 space-y-4 md:mt-16">
             {achievement.length > 0 && (
                 <div className="flex flex-col space-y-5 items-center justify-center">
-                    <h1 className="text-3xl font-bold tracking-tighter md:text-5xl">🎉 Achievement</h1>
+                    <h1 className="text-3xl font-bold tracking-tighter md:text-5xl">
+                        🎉 Achievement ({achievement.length})
+                    </h1>
                     <Carousel
                         plugins={[plugin.current]}
                         onMouseEnter={plugin.current.stop}

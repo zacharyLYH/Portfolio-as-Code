@@ -22,35 +22,39 @@ export default function Projects({ projects }: ProjectsInterface) {
     const currentProjects = projects.slice(indexOfFirstProject, indexOfLastProject);
 
     return (
-        <div className="my-4 mt-8 space-y-4 md:mt-16">
-            <h2 className="text-3xl font-bold tracking-tighter md:text-5xl">🛠️ Projects</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {currentProjects.map((project) => (
-                    <ProjectCard key={project.id} project={project} />
-                ))}
-            </div>
-            <div className="flex justify-center mt-6">
-                <Button
-                    variant="outline"
-                    onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-                    disabled={currentPage === 1}
-                >
-                    <ChevronLeft className="h-4 w-4 mr-2" />
-                    Previous
-                </Button>
-                <span className="mx-4 self-center">
-                    Page {currentPage} of {totalPages}
-                </span>
-                <Button
-                    variant="outline"
-                    onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-                    disabled={currentPage === totalPages}
-                >
-                    Next
-                    <ChevronRight className="h-4 w-4 ml-2" />
-                </Button>
-            </div>
-        </div>
+        <>
+            {projects.length > 0 && (
+                <div className="my-4 mt-8 space-y-4 md:mt-16">
+                    <h2 className="text-3xl font-bold tracking-tighter md:text-5xl">🛠️ Projects ({projects.length})</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {currentProjects.map((project) => (
+                            <ProjectCard key={project.id} project={project} />
+                        ))}
+                    </div>
+                    <div className="flex justify-center mt-6">
+                        <Button
+                            variant="outline"
+                            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                            disabled={currentPage === 1}
+                        >
+                            <ChevronLeft className="h-4 w-4 mr-2" />
+                            Previous
+                        </Button>
+                        <span className="mx-4 self-center">
+                            Page {currentPage} of {totalPages}
+                        </span>
+                        <Button
+                            variant="outline"
+                            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+                            disabled={currentPage === totalPages}
+                        >
+                            Next
+                            <ChevronRight className="h-4 w-4 ml-2" />
+                        </Button>
+                    </div>
+                </div>
+            )}
+        </>
     );
 }
 
