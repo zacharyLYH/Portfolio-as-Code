@@ -53,7 +53,7 @@ export default function PortfolioHero({ data }: PortfolioHeroInterface) {
                 ) : null}
                 <div className="flex flex-col sm:flex-row sm:items-center gap-4">
                     <Button asChild className="w-full sm:w-auto">
-                        <a href={data.resumeLink} download>
+                        <a href={data.resumeLink} target="_blank" rel="noopener noreferrer" download>
                             <FileText className="mr-2 h-4 w-4" />
                             Download Resume
                         </a>
