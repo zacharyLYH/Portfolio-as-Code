@@ -16,6 +16,11 @@ Portfolio generator configured using json. Geared for portfolios that have a lot
 4. Name of file **MUST** be called `portfolio_data.json`. The default name should already be correct. If there are multiple of these config files, your OS might prepend numbers to deduplicate. You must remove the numbers and call the file exactly as `portfolio_data.json`.
 5. Move `portfolio_data.json` into the **root** directory of this project. 
 6. Host it! For the most foolproof experience, we suggest [Vercel](https://medium.com/@hikmohadetunji/hosting-your-first-website-on-vercel-a-step-by-step-guide-95061f1ca687).
+7. (Optional) In an environment variable, provide a page title to populate the browser tab's title. The variable must be called `NEXT_PUBLIC_WEBPAGE_TITLE`
+```
+Example:
+NEXT_PUBLIC_WEBPAGE_TITLE=Zachary Lee's Portfolio
+```
 
 
 # Json config (For contributers)
