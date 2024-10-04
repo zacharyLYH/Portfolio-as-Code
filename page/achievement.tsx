@@ -66,7 +66,7 @@ export default function Achievement({ achievement }: AchievementPageProps) {
                                                                     href={link}
                                                                     target="_blank"
                                                                     rel="noopener noreferrer"
-                                                                    className="text-primary hover:underline flex items-center hover:text-blue-700"
+                                                                    className="text-blue-500 hover:underline flex items-center hover:text-blue-700"
                                                                 >
                                                                     <LinkIcon className="h-3 w-3 mr-2" />
                                                                     {link}
