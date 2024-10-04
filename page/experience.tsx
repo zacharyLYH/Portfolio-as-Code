@@ -61,7 +61,7 @@ export default function Experience({ experiences }: { experiences: JobProject[] 
                                             {exp.description && (
                                                 <div className="my-4 ">
                                                     <span className="font-bold text-xl">Description:</span>
-                                                    <p className="text-muted-foreground text-pretty text-sm overflow-hidden text-ellipsis break-words">
+                                                    <p className="text-muted-foreground text-pretty text-sm overflow-hidden text-ellipsis break-words whitespace-pre-line">
                                                         {exp.description}
                                                     </p>
                                                 </div>

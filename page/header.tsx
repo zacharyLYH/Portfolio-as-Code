@@ -61,7 +61,7 @@ export default function PortfolioHero({ data }: PortfolioHeroInterface) {
                                 <AccordionContent>
                                     <Card>
                                         <CardContent className="pt-6">
-                                            <p className="text-muted-foreground text-sm overflow-hidden text-ellipsis break-words">
+                                            <p className="text-muted-foreground text-sm overflow-hidden text-ellipsis break-words whitespace-pre-line">
                                                 {data.longBio}
                                             </p>
                                         </CardContent>
