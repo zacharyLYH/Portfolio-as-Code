@@ -29,7 +29,7 @@ export default function Experience({ experiences }: { experiences: JobProject[] 
                         <Accordion key={exp.id} type="single" collapsible className="w-full md:max-w-screen-xl">
                             <AccordionItem value={exp.id}>
                                 <AccordionTrigger>
-                                    <div className="flex flex-row space-x-4">
+                                    <div className="grid grid-cols-2 gap-x-4 w-full md:flex md:flex-row md:space-x-4">
                                         <span className="font-semibold text-xl">{exp.title}</span>
                                         <div className="flex items-center text-sm text-muted-foreground">
                                             <TooltipProvider>
