@@ -61,7 +61,7 @@ export default function Education({ educationItems }: EducationPageProps) {
                                                                     <Text className="h-4 w-4" />
                                                                     Description
                                                                 </h4>
-                                                                <p className='whitespace-pre-line'>
+                                                                <p className="whitespace-pre-line">
                                                                     {item.description}
                                                                 </p>
                                                             </>

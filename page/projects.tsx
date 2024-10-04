@@ -132,7 +132,9 @@ function ProjectDetails({ project }: { project: JobProject }) {
                 <Calendar className="h-6 w-6" /> {formattedStartDate} -{' '}
                 {project.isCurrent ? 'Present' : formattedEndDate}
             </p>
-            <p className="mb-4 text-pretty text-sm overflow-hidden text-ellipsis break-words whitespace-pre-line">{project.description}</p>
+            <p className="mb-4 text-pretty text-sm overflow-hidden text-ellipsis break-words whitespace-pre-line">
+                {project.description}
+            </p>
             {project.links.length > 0 && (
                 <div className="mb-4">
                     <h4 className="font-semibold">Links:</h4>

@@ -33,7 +33,9 @@ export default function Achievement({ achievement }: AchievementPageProps) {
                                     <Card>
                                         <CardHeader>
                                             <CardTitle>{item.name}</CardTitle>
-                                            <CardDescription className='whitespace-pre-line'>{item.description}</CardDescription>
+                                            <CardDescription className="whitespace-pre-line">
+                                                {item.description}
+                                            </CardDescription>
                                         </CardHeader>
                                         <CardContent>
                                             <div className="flex items-center gap-2 text-muted-foreground mb-4">
