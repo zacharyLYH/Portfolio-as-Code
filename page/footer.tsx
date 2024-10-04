@@ -4,7 +4,7 @@ import Link from 'next/link';
 export default function Footer() {
     return (
         <footer className="rounded-lg shadow mt-8">
-            <div className="flex flex-row justify-between w-full mx-auto max-w-screen-xl p-4 gap-y-2 items-center">
+            <div className="flex flex-col md:flex-row justify-between w-full mx-auto max-w-screen-xl p-4 gap-y-2 items-center">
                 <span className="flex items-center justify-center space-x-2">
                     <GitHubLogoIcon className="w-6 h-6" />
                     <a
