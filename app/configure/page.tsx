@@ -61,9 +61,9 @@ export default function PortfolioPage() {
                 return date;
             }
             const year = date.getFullYear();
-            const month = date.getMonth() + 1;
+            const month = date.getMonth();
             const day = date.getDate();
-            return new Date(year, month, day);
+            return new Date(Date.UTC(year, month, day));
         };
         if (!data.name) {
             return 'Name is required.';
