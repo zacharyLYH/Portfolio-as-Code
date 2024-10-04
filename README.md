@@ -10,6 +10,15 @@ Portfolio generator configured using json. Geared for portfolios that have a lot
 - Advanced filter support for users to query your portfolio
 - Modern, text dominant friendly, sleek looking UI
 
+![Filter page](https://github.com/user-attachments/assets/519d0c14-3d17-41b5-beaf-175715f25a86)
+![Header](https://github.com/user-attachments/assets/340d42c2-e62b-4d7a-a909-1b0b59b30e99)
+![Experience](https://github.com/user-attachments/assets/9d5ba234-54a4-45f2-a58e-1d1bc327bd37)
+![Project](https://github.com/user-attachments/assets/8e9233eb-53dd-483f-a766-8e8fe0681f0a)
+![Project detail](https://github.com/user-attachments/assets/639ecae7-fd5f-4135-a1ce-7635061c01f0)
+![Education](https://github.com/user-attachments/assets/fe17ea6d-2e68-4a80-aa05-a1272e05d11f)
+![Footer and Achievement](https://github.com/user-attachments/assets/6cb99105-e0bb-487b-bce2-8d6ae4f473e7)
+
+
 # To use
 1. Navigate to [configure page](https://zacharyLYH.bio/configure).
 2. Fill in relevant details. Correct errors as prompted.
@@ -64,7 +73,9 @@ PortfolioData
 - longBio 
 - title (R)
 - location (R)
-- resumeLink 
+- resumeLink
+
+Under the hood, every data record has an `id` field generated using the `new Date.now()` javascript function. This is used in filtering functionality.
 
 
 
