@@ -14,6 +14,7 @@ import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/componen
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { formatDate } from '@/lib/utils';
+import { Switch } from '@/components/ui/switch';
 
 interface CustomSpotlightProps {
     isOpen: boolean;
@@ -38,10 +39,11 @@ export default function CustomSpotlight({
     const [startDate, setStartDate] = useState<Date>();
     const [endDate, setEndDate] = useState<Date>();
     const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
+    const [containLinks, setContainLinks] = useState(false);
     const spotlightRef = useRef<HTMLDivElement>(null);
 
     const handleSearch = () => {
-        onSearch({ keyword, startDate, endDate, selectedSkills });
+        onSearch({ keyword, startDate, endDate, selectedSkills, containsLinks: containLinks });
     };
 
     const closeFilterComponent = () => {
@@ -199,6 +201,23 @@ export default function CustomSpotlight({
                                             </div>
                                         </>
                                     )}
+                                    <div className="flex items-center space-x-2">
+                                        <Switch
+                                            id="containsLinks"
+                                            checked={containLinks}
+                                            onCheckedChange={() => setContainLinks(!containLinks)}
+                                            onKeyDown={(e) => {
+                                                if (e.key === "Enter" || e.key === " ") {
+                                                    e.preventDefault(); 
+                                                }
+                                            }}
+                                        />
+                                        <span className="text-sm">Must contain</span>
+                                        <div className="flex items-center space-x-1">
+                                            <Link className="h-4 w-4" />
+                                            <span className="text-sm">links</span>
+                                        </div>
+                                    </div>
                                     <div className="flex flex-row gap-2 p-5">
                                         <Button
                                             variant="default"

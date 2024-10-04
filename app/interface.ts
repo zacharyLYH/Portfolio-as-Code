@@ -59,6 +59,7 @@ interface FilterCriteria {
     startDate?: Date;
     endDate?: Date;
     keyword?: string;
+    containsLinks?: boolean;
 }
 
 interface SearchResultRecord {

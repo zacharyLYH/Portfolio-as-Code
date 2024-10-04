@@ -35,7 +35,8 @@ export function filterPortfolioData(portfolioData: PortfolioData, criteria: Filt
         if (
             containsSkills(criteria, project.skills) &&
             isInRange(criteria, project.startDate, project.endDate) &&
-            containsKeywords(criteria, { title: project.title, description: project.description })
+            containsKeywords(criteria, { title: project.title, description: project.description }) &&
+            (criteria.containsLinks ? project.links.length > 0 : true)
         ) {
             resultIds.push({
                 type: 'jobProjects',
@@ -50,7 +51,8 @@ export function filterPortfolioData(portfolioData: PortfolioData, criteria: Filt
         if (
             containsSkills(criteria, education.links) &&
             isInRange(criteria, education.startDate, education.endDate) &&
-            containsKeywords(criteria, { title: education.institutionName, description: education.description })
+            containsKeywords(criteria, { title: education.institutionName, description: education.description }) &&
+            (criteria.containsLinks ? education.links.length > 0 : true)
         ) {
             resultIds.push({
                 type: 'education',
@@ -65,7 +67,8 @@ export function filterPortfolioData(portfolioData: PortfolioData, criteria: Filt
         if (
             containsSkills(criteria, achievement.skills) &&
             isInRange(criteria, achievement.dateAwarded, null) &&
-            containsKeywords(criteria, { title: achievement.name, description: achievement.description })
+            containsKeywords(criteria, { title: achievement.name, description: achievement.description }) &&
+            (criteria.containsLinks ? achievement.links.length > 0 : true)
         ) {
             resultIds.push({
                 type: 'achievements',
